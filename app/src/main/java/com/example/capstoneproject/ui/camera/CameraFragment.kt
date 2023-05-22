@@ -42,9 +42,9 @@ class CameraFragment : Fragment() {
             checkStoragePermission()
         }
 
-        viewModel.selectedImageUri.observe(viewLifecycleOwner, { uri ->
+        viewModel.selectedImageUri.observe(viewLifecycleOwner) { uri ->
             imageView.setImageURI(uri)
-        })
+        }
 
         return view
     }

@@ -18,9 +18,15 @@
         tools:layout="@layout/fragment_camera" />
 
     <fragment
-        android:id="@+id/navigation_setting"
-        android:name="com.example.capstoneproject.ui.setting.SettingFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_setting" />
+        android:id="@+id/navigation_profile"
+        android:name="com.example.capstoneproject.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_register"
+        android:name="com.example.capstoneproject.ui.register.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register"/>
 
 </navigation>

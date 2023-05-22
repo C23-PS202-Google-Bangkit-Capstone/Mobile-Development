@@ -1,38 +1,38 @@
-package com.example.capstoneproject.ui.setting
+package com.example.capstoneproject.ui.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.capstoneproject.databinding.FragmentSettingBinding
+import androidx.fragment.app.viewModels
+import com.example.capstoneproject.databinding.FragmentRegisterBinding
 
-class SettingFragment : Fragment() {
 
-    private var _binding: FragmentSettingBinding? = null
+class RegisterFragment : Fragment() {
+
+    private var _binding: FragmentRegisterBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    val viewModelRegister: RegisterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val settingViewModel =
-            ViewModelProvider(this).get(SettingViewModel::class.java)
 
-        _binding = FragmentSettingBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
 //        val textView: TextView = binding.textNotifications
 //        settingViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {
