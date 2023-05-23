@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.capstoneproject.R
@@ -48,7 +49,8 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         val registerFragment = RegisterFragment()
         val fragmentManager = parentFragmentManager
         fragmentManager.beginTransaction().apply {
-            replace(R.id.navigation_profile, registerFragment).commit()
+            replace(R.id.nav_host_fragment_activity_main, registerFragment)
+            commit()
         }
     }
 }
