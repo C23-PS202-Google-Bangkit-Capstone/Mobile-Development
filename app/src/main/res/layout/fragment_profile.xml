@@ -1,71 +1,83 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/primary_color">
 
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login Form"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="16dp" />
+            <TextView
+                android:id="@+id/tv_nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Lengkap"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Kata Sandi"
-            android:layout_marginBottom="16dp" />
+            <TextView
+                android:id="@+id/tv_kota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:text="Kabupaten/Kota"/>
 
-        <Button
-            android:id="@+id/buttonLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:textColor="#ffffff"
-            android:layout_marginBottom="16dp" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="right"
+            android:orientation="horizontal">
 
-            <TextView
+            <Button
+                android:id="@+id/btn_login"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Belum punya akun?"
-                android:layout_gravity="center" />
-
-            <TextView
-                android:id="@+id/textViewRegister"
+                android:layout_height="43dp"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/white"
+                android:text="Login"
+                android:textColor="@color/primary_color"
+                android:textSize="12sp" />
+            <Button
+                android:id="@+id/btn_register"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Daftar Sekarang"
-                android:textColor="#00aeef"
-                android:textStyle="bold"
-                android:layout_marginStart="8dp"
-                android:layout_gravity="center" />
+                android:layout_height="43dp"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/white"
+                android:text="Register"
+                android:textColor="@color/primary_color"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
+
     </LinearLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

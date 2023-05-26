@@ -1,42 +1,36 @@
 package com.example.capstoneproject.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentProfileBinding
-import com.example.capstoneproject.ui.register.RegisterFragment
+import com.example.capstoneproject.ui.LoginActivity
+import com.example.capstoneproject.ui.RegisterActivity
 
-class ProfileFragment : Fragment(), View.OnClickListener {
+class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
-    val profileViewModel: ProfileViewModel by viewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tvRegister: TextView = view.findViewById(R.id.textViewRegister)
-        tvRegister.setOnClickListener(this)
+        setupButtons()
     }
 
     override fun onDestroyView() {
@@ -44,13 +38,18 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         _binding = null
     }
 
+    private fun setupButtons() {
+        val loginButton = binding.btnLogin
+        val registerButton = binding.btnRegister
 
-    override fun onClick(v: View) {
-        val registerFragment = RegisterFragment()
-        val fragmentManager = parentFragmentManager
-        fragmentManager.beginTransaction().apply {
-            replace(R.id.nav_host_fragment_activity_main, registerFragment)
-            commit()
+        loginButton.setOnClickListener {
+            val loginIntent = Intent(activity, LoginActivity::class.java)
+            startActivity(loginIntent)
+        }
+
+        registerButton.setOnClickListener {
+            val registerIntent = Intent(activity, RegisterActivity::class.java)
+            startActivity(registerIntent)
         }
     }
 }

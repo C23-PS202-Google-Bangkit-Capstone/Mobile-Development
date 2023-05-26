@@ -23,10 +23,6 @@
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 
-    <fragment
-        android:id="@+id/navigation_register"
-        android:name="com.example.capstoneproject.ui.register.RegisterFragment"
-        android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register"/>
+
 
 </navigation>

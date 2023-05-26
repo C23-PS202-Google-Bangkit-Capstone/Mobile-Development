@@ -32,8 +32,6 @@ class CameraFragment : Fragment() {
 
     companion object {
         private const val REQUEST_CODE_IMAGE_PICKER = 100
-        private const val REQUEST_CODE_CAMERA_PERMISSION = 101
-        private const val REQUEST_CODE_CAMERA = 102
     }
 
     private var getFile: File? = null
@@ -41,9 +39,6 @@ class CameraFragment : Fragment() {
     private val mModelPath = "imagelite_model.tflite"
     private val mLabelPath = "label.txt"
     private lateinit var classifier: Classifier
-    private val IMAGE_MEAN = 0
-    private val IMAGE_STD = 255.0f
-    private val INPUT_SIZE: Int = 224
     private lateinit var imageView: ImageView
     private lateinit var pickImageButton: Button
     private lateinit var scanButton: Button

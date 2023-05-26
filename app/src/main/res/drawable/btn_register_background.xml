@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke
+        android:width="3dp"
+        android:color="#FFFFFF" /> <!-- Warna stoke -->
+    <solid android:color="@color/primary_color" /> <!-- Warna latar belakang -->
+    <corners android:radius="4dp" /> <!-- Sudut bulat pada tombol -->
+</shape>
