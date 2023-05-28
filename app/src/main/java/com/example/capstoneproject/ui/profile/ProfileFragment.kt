@@ -8,6 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.capstoneproject.Hero
+import com.example.capstoneproject.ListHeroAdapter
+import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentProfileBinding
 import com.example.capstoneproject.ui.LoginActivity
 import com.example.capstoneproject.ui.RegisterActivity
@@ -31,11 +37,32 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupButtons()
+
+        val recyclerView: RecyclerView = binding.rvBookmark
+        recyclerView.setHasFixedSize(true)
+
+        val listHero = getListHeroes()
+
+        val listHeroAdapter = ListHeroAdapter(listHero)
+        recyclerView.adapter = listHeroAdapter
+        recyclerView.layoutManager = GridLayoutManager(activity,2)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun getListHeroes(): ArrayList<Hero> {
+        val dataName = resources.getStringArray(R.array.data_name)
+        val dataDescription = resources.getStringArray(R.array.data_description)
+        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+        val listHero = ArrayList<Hero>()
+        for (i in dataName.indices) {
+            val hero = Hero(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
+            listHero.add(hero)
+        }
+        return listHero
     }
 
     private fun setupButtons() {

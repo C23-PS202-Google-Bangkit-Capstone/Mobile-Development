@@ -35,10 +35,7 @@ class HomeFragment : Fragment() {
 
         list.addAll(getListHeroes())
         showRecyclerList()
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+
         return root
     }
 

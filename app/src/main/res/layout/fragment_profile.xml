@@ -1,18 +1,20 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:orientation="vertical">
+    android:background="@color/bg_rv">
 
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/primary_color"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:background="@color/primary_color">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -25,17 +27,17 @@
                 android:layout_height="wrap_content"
                 android:text="Nama Lengkap"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_kota"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dp"
-                android:textSize="12sp"
+                android:text="Kabupaten/Kota"
                 android:textColor="@color/white"
-                android:text="Kabupaten/Kota"/>
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -55,6 +57,7 @@
                 android:text="Login"
                 android:textColor="@color/primary_color"
                 android:textSize="12sp" />
+
             <Button
                 android:id="@+id/btn_register"
                 android:layout_width="wrap_content"
@@ -70,14 +73,33 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linear2"
+    <TextView
+        android:id="@+id/tv_bookmark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Bookmark"
+        android:textAlignment="center"
+        android:padding="4dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="@color/white"
+        android:textColor="@color/primary_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear1" />
 
-    </LinearLayout>
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bookmark"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/bg_rv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bookmark" />
 
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
