@@ -5,18 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.Hero
 import com.example.capstoneproject.ListHeroAdapter
 import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentProfileBinding
 import com.example.capstoneproject.ui.LoginActivity
-import com.example.capstoneproject.ui.RegisterActivity
+import com.example.capstoneproject.ui.register.RegisterActivity
 
 class ProfileFragment : Fragment() {
 
