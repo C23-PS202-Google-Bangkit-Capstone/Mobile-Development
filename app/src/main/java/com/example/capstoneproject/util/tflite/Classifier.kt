@@ -9,7 +9,6 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
-import java.util.ArrayList
 import java.util.PriorityQueue
 
 class Classifier(assetManager: AssetManager, modelPath: String, labelPath: String, inputSize: Int) {
@@ -26,7 +25,7 @@ class Classifier(assetManager: AssetManager, modelPath: String, labelPath: Strin
         var id: String = "",
         var title: String = "",
         var confidence: Float = 0F
-    )  {
+    ) {
         override fun toString(): String {
             return "Title = $title, Confidence = $confidence)"
         }
@@ -78,7 +77,7 @@ class Classifier(assetManager: AssetManager, modelPath: String, labelPath: Strin
             for (j in 0 until INPUT_SIZE) {
                 val input = intValues[pixel++]
 
-                byteBuffer.putFloat((((input.shr(16)  and 0xFF) - IMAGE_MEAN) / IMAGE_STD))
+                byteBuffer.putFloat((((input.shr(16) and 0xFF) - IMAGE_MEAN) / IMAGE_STD))
                 byteBuffer.putFloat((((input.shr(8) and 0xFF) - IMAGE_MEAN) / IMAGE_STD))
                 byteBuffer.putFloat((((input and 0xFF) - IMAGE_MEAN) / IMAGE_STD))
             }
@@ -87,20 +86,30 @@ class Classifier(assetManager: AssetManager, modelPath: String, labelPath: Strin
     }
 
     private fun getSortedResult(labelProbArray: Array<FloatArray>): List<Classifier.Recognition> {
-        Log.d("Classifier", "List Size:(%d, %d, %d)".format(labelProbArray.size,labelProbArray[0].size,lableList.size))
+        Log.d(
+            "Classifier",
+            "List Size:(%d, %d, %d)".format(
+                labelProbArray.size,
+                labelProbArray[0].size,
+                lableList.size
+            )
+        )
 
         val pq = PriorityQueue(
             MAX_RESULTS,
-            Comparator<Recognition> {
-                    (_, _, confidence1), (_, _, confidence2)
-                -> java.lang.Float.compare(confidence1, confidence2) * -1
+            Comparator<Recognition> { (_, _, confidence1), (_, _, confidence2)
+                ->
+                java.lang.Float.compare(confidence1, confidence2) * -1
             })
 
         for (i in lableList.indices) {
             val confidence = labelProbArray[0][i]
             if (confidence >= THRESHOLD) {
-                pq.add(Classifier.Recognition("" + i,
-                    if (lableList.size > i) lableList[i] else "Unknown", confidence)
+                pq.add(
+                    Classifier.Recognition(
+                        "" + i,
+                        if (lableList.size > i) lableList[i] else "Unknown", confidence
+                    )
                 )
             }
         }

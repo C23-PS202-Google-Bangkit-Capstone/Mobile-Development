@@ -74,7 +74,12 @@ class CameraFragment : Fragment() {
             val bitmap = previewImageBitmap
 
             val result = classifier.recognizeImage(bitmap)
-            Toast.makeText(activity, result[0].title, Toast.LENGTH_SHORT).show()
+
+            if (result.isEmpty()) {
+                Toast.makeText(activity, "Unknown", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(activity, result[0].title, Toast.LENGTH_SHORT).show()
+            }
         }
 
         return view

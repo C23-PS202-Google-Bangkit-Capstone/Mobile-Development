@@ -24,7 +24,11 @@ class HomeFragment : Fragment() {
     private lateinit var rvHeroes: RecyclerView
     private val list = ArrayList<Hero>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -57,7 +61,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showRecyclerList() {
-        rvHeroes.layoutManager = GridLayoutManager(requireContext(),2)
+        rvHeroes.layoutManager = GridLayoutManager(requireContext(), 2)
         val listHeroAdapter = ListHeroAdapter(list)
         rvHeroes.adapter = listHeroAdapter
     }

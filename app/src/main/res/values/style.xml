@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="BottomNavActiveItemStyle" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:textSize">@dimen/bottom_nav_item_size_active</item>
     </style>

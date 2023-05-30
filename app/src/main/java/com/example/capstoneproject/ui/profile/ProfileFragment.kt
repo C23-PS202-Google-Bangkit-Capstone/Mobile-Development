@@ -43,7 +43,7 @@ class ProfileFragment : Fragment() {
 
         val listHeroAdapter = ListHeroAdapter(listHero)
         recyclerView.adapter = listHeroAdapter
-        recyclerView.layoutManager = GridLayoutManager(activity,2)
+        recyclerView.layoutManager = GridLayoutManager(activity, 2)
     }
 
     override fun onDestroyView() {

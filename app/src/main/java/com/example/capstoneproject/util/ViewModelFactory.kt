@@ -12,13 +12,13 @@ class ViewModelFactory(private val repo: Repository) : ViewModelProvider.NewInst
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
-           /* modelClass.isAssignableFrom(MainViewModel::class.java) -> {
-                MainViewModel(repo) as T
-            }
+            /* modelClass.isAssignableFrom(MainViewModel::class.java) -> {
+                 MainViewModel(repo) as T
+             }
 
-            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
-                LoginViewModel(repo) as T
-            }*/
+             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+                 LoginViewModel(repo) as T
+             }*/
 
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repo) as T

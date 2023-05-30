@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#A7EED0"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
     <ImageView
         android:id="@+id/splash_logo"

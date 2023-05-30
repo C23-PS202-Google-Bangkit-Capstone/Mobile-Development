@@ -28,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
             registerClicked()
         }
 
-        binding.fabBack.setOnClickListener{
+        binding.fabBack.setOnClickListener {
             backClicked()
         }
     }
@@ -58,7 +58,8 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
-    private fun backClicked(){
+
+    private fun backClicked() {
         startActivity(Intent(this, MainActivity::class.java))
     }
 }

@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.capstoneproject.MainActivity
 import com.example.capstoneproject.R
-import android.widget.ImageView
 
 class SplashActivity : AppCompatActivity() {
 

@@ -38,7 +38,7 @@ android {
         viewBinding true
         mlModelBinding true
     }
-    aaptOptions{
+    aaptOptions {
         noCompress "tflite"
     }
 }
@@ -70,8 +70,6 @@ dependencies {
     implementation 'com.github.jkwiecien:EasyImage:3.0.4'
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
-
-
 
 
 }
