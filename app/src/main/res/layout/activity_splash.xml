@@ -5,24 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.SplashActivity">
 
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bg_buah"
-        android:scaleType="centerCrop"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blackT"
+        android:background="#A7EED0"
         android:scaleType="centerCrop"/>
 
     <ImageView
         android:id="@+id/splash_logo"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/logo2"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:src="@drawable/logo_full" />
 
 </RelativeLayout>
