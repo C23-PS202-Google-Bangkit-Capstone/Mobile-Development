@@ -7,6 +7,6 @@ import com.example.capstoneproject.util.repository.Repository
 object Injection {
     fun provideRepository(context: Context): Repository {
         val apiService = ApiConfig.getApiService()
-        return Repository( apiService)
+        return Repository(apiService)
     }
 }

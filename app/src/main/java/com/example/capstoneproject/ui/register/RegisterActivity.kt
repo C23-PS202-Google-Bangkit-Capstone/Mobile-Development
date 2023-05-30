@@ -1,9 +1,11 @@
 package com.example.capstoneproject.ui.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.capstoneproject.MainActivity
 import com.example.capstoneproject.databinding.ActivityRegisterBinding
 import com.example.capstoneproject.util.ViewModelFactory
 import com.example.capstoneproject.util.repository.Result
@@ -24,6 +26,10 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnSignup.setOnClickListener {
             registerClicked()
+        }
+
+        binding.fabBack.setOnClickListener{
+            backClicked()
         }
     }
 
@@ -51,5 +57,8 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    private fun backClicked(){
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

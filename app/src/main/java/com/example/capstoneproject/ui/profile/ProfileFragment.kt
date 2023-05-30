@@ -13,7 +13,7 @@ import com.example.capstoneproject.Hero
 import com.example.capstoneproject.ListHeroAdapter
 import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentProfileBinding
-import com.example.capstoneproject.ui.LoginActivity
+import com.example.capstoneproject.ui.login.LoginActivity
 import com.example.capstoneproject.ui.register.RegisterActivity
 
 class ProfileFragment : Fragment() {
