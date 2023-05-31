@@ -1,9 +1,12 @@
 package com.example.capstoneproject.ui.home
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -33,6 +36,10 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        // Mengubah warna Action Bar
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
         rvHeroes = binding.rvHeroes
         rvHeroes.setHasFixedSize(true)

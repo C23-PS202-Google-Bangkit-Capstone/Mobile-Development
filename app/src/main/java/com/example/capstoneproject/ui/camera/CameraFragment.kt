@@ -5,6 +5,8 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -52,6 +55,11 @@ class CameraFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_camera, container, false)
         initClassifier()
+
+        // Setting Action Bar
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = "Fresh Detection"
+        actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
         imageView = view.findViewById(R.id.imageView)
         pickImageButton = view.findViewById(R.id.pickImageButton)

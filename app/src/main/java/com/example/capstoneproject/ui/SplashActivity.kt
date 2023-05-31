@@ -36,7 +36,7 @@ class SplashActivity : AppCompatActivity() {
                     val intent = Intent(this@SplashActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
-                }, 2000) // Delay in milliseconds (2 seconds)
+                }, 1000) // Delay in milliseconds (2 seconds)
             }
 
             override fun onAnimationRepeat(animation: Animation?) {}
