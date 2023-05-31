@@ -15,17 +15,17 @@
         android:layout_marginTop="24dp"
         android:clickable="true"
         app:backgroundTint="@color/white"
-        app:tint="@color/primary_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+        app:srcCompat="@drawable/baseline_arrow_back_ios_24"
+        app:tint="@color/black" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_begin="256dp" />
 
     <TextView
         android:id="@+id/tv_welcome"
@@ -34,7 +34,7 @@
         android:layout_marginStart="12dp"
         android:fontFamily="sans-serif-medium"
         android:text="Welcome\nBack"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="36dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +44,7 @@
         style="@style/custom_card_view_style"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:checkedIconTint="@color/green_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline">
 
@@ -61,7 +62,7 @@
                 android:background="@drawable/ed_background"
                 android:drawableLeft="@drawable/baseline_email_24"
                 android:drawablePadding="8dp"
-                android:drawableTint="@color/primary_color"
+                android:drawableTint="@color/green_500"
                 android:ems="10"
                 android:hint="Email or Name"
                 android:inputType="textEmailAddress"
@@ -80,7 +81,7 @@
                 android:background="@drawable/ed_background"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:drawableTint="@color/primary_color"
+                android:drawableTint="@color/green_500"
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -95,8 +96,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="12dp"
+                android:fontFamily="sans-serif"
                 android:text="Forgot Password?"
-                android:textColor="@color/primary_color"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ed_password" />
@@ -109,6 +111,7 @@
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/primary_color"
                 android:text="Sign In"
+                android:textColor="@color/black"
                 app:cornerRadius="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
