@@ -10,7 +10,7 @@
 
     //contoh aja
     <string name="heroes_name">Nama Pahlawan</string>
-    <string name="description">Deskripsi</string>
+    <string name="description">Ini deskripsi</string>
     <string-array name="data_name">
         <item>Universitas Ahmad Dahlan Yogyakarta Jaya Baya</item>
         <item>Ahmad Yani</item>
@@ -47,4 +47,6 @@
 
     <string name="timeout">Timeout</string>
     <string name="reload">Reload</string>
+    <string name="location">Ini lokasi</string>
+    <string name="nama">Ini Nama</string>
 </resources>

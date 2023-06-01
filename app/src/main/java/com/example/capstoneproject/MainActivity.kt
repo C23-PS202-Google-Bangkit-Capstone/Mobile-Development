@@ -19,9 +19,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Mengubah warna Action Bar
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

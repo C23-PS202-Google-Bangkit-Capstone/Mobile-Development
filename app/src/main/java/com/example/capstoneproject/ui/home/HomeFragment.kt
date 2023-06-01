@@ -4,8 +4,13 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +25,7 @@ import com.example.capstoneproject.ui.home.adapter.LoadingAdapter
 import com.example.capstoneproject.ui.home.adapter.RecipesAdapter
 import com.example.capstoneproject.ui.register.RegisterViewModel
 import com.example.capstoneproject.util.ViewModelFactory
+import com.google.android.material.search.SearchView
 
 class HomeFragment : Fragment() {
 
@@ -45,7 +51,10 @@ class HomeFragment : Fragment() {
 
         // Setting Action Bar
         val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = "Fresh Check"
         actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+
+        setHasOptionsMenu(true)
 
         adapter = RecipesAdapter()
         rvRecipes = binding.rvHeroes
@@ -80,4 +89,40 @@ class HomeFragment : Fragment() {
         rvRecipes.setHasFixedSize(true)
         rvRecipes.adapter = adapter
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.action_bar_menu, menu)
+
+        val searchItem: MenuItem? = menu.findItem(R.id.menu_search)
+        val searchView: SearchView? = searchItem?.actionView as? SearchView
+
+        // Mengganti judul dengan gambar dan teks
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.setDisplayShowTitleEnabled(false) // Sembunyikan judul teks
+        actionBar?.setDisplayShowCustomEnabled(true) // Aktifkan tampilan kustom pada ActionBar
+
+        val customView = layoutInflater.inflate(R.layout.custom_action_bar, null)
+        val imageView = customView.findViewById<ImageView>(R.id.imageView)
+        val titleTextView = customView.findViewById<TextView>(R.id.titleTextView)
+        imageView.setImageResource(R.drawable.logoimage_darkgreen) // Ganti dengan sumber gambar yang Anda inginkan
+        titleTextView.text = "Fresh Check" // Ganti dengan judul yang Anda inginkan
+
+        actionBar?.customView = customView
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_search -> {
+                // Tindakan yang ingin Anda lakukan saat menu pencarian diklik
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
 }

@@ -22,6 +22,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.capstoneproject.R
+import com.example.capstoneproject.ui.IntermezzoActivity
+import com.example.capstoneproject.ui.login.LoginActivity
 import com.example.capstoneproject.util.tflite.Classifier
 import com.github.dhaval2404.imagepicker.ImagePicker
 
@@ -58,7 +60,7 @@ class CameraFragment : Fragment() {
 
         // Setting Action Bar
         val actionBar = (activity as AppCompatActivity).supportActionBar
-        actionBar?.title = "Fresh Detection"
+        actionBar?.title = "Fresh Check"
         actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
         imageView = view.findViewById(R.id.imageView)
@@ -89,6 +91,9 @@ class CameraFragment : Fragment() {
                 Toast.makeText(activity, result[0].title, Toast.LENGTH_SHORT).show()
 
             }
+
+            val Intent = Intent(activity, IntermezzoActivity::class.java)
+            startActivity(Intent)
         }
 
         return view

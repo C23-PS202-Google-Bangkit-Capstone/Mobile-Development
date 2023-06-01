@@ -39,8 +39,9 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupButtons()
 
-        // Mengubah warna Action Bar
+        // Setting Action Bar
         val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = "Fresh Check"
         actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
         val recyclerView: RecyclerView = binding.rvBookmark

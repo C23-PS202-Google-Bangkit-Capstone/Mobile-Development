@@ -10,7 +10,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logoimage_darkgreen"
+        android:icon="@drawable/app_icon_logo"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -18,6 +18,12 @@
         android:theme="@style/Theme.CapstoneProject"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.IntermezzoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.DetailRecipeActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
@@ -29,9 +35,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.SplashActivity"
-            android:theme="@style/FullScreen"
             android:exported="true"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
