@@ -1,40 +1,40 @@
-FreshApple
-FreshBanana
-FreshBellpepper
-FreshBitterGourd
-FreshCarrot
-FreshCucumber
-FreshGrape
-FreshGuava
-FreshJujube
-FreshLemon
-FreshLulo
-FreshMango
-FreshOkra
-FreshOrange
-FreshPapaya
-FreshPomegranate
-FreshPotato
-FreshStrawberry
-FreshTamarillo
-FreshTomato
-RottenApple
-RottenBanana
-RottenBellpepper
-RottenBitterGourd
-RottenCarrot
-RottenCucumber
-RottenGrape
-RottenGuava
-RottenJujube
-RottenLemon
-RottenLulo
-RottenMango
-RottenOkra
-RottenOrange
-RottenPapaya
-RottenPomegranate
-RottenPotato
-RottenStrawberry
-RottenTamarillo
-RottenTomato
+Fresh Apple
+Fresh Banana
+Fresh Bellpepper
+Fresh BitterGourd
+Fresh Carrot
+Fresh Cucumber
+Fresh Grape
+Fresh Guava
+Fresh Jujube
+Fresh Lemon
+Fresh Lulo
+Fresh Mango
+Fresh Okra
+Fresh Orange
+Fresh Papaya
+Fresh Pomegranate
+Fresh Potato
+Fresh Strawberry
+Fresh Tamarillo
+Fresh Tomato
+Rotten Apple
+Rotten Banana
+Rotten Bellpepper
+Rotten BitterGourd
+Rotten Carrot
+Rotten Cucumber
+Rotten Grape
+Rotten Guava
+Rotten Jujube
+Rotten Lemon
+Rotten Lulo
+Rotten Mango
+Rotten Okra
+Rotten Orange
+Rotten Papaya
+Rotten Pomegranate
+Rotten Potato
+Rotten Strawberry
+Rotten Tamarillo
+Rotten Tomato

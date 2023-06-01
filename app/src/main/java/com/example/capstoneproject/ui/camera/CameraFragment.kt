@@ -87,6 +87,7 @@ class CameraFragment : Fragment() {
                 Toast.makeText(activity, "Unknown", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(activity, result[0].title, Toast.LENGTH_SHORT).show()
+
             }
         }
 

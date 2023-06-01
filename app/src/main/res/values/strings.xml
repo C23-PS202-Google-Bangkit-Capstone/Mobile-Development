@@ -44,4 +44,7 @@
         <item>@drawable/sukarno</item>
         <item>@drawable/supomo</item>
     </integer-array>
+
+    <string name="timeout">Timeout</string>
+    <string name="reload">Reload</string>
 </resources>

@@ -3,11 +3,15 @@ package com.example.capstoneproject.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.example.capstoneproject.util.api.RecipesItem
+import com.example.capstoneproject.util.repository.Repository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val repo: Repository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    fun getStories(): LiveData<PagingData<RecipesItem>> {
+        return repo.getRecipes().cachedIn(viewModelScope)
     }
-    val text: LiveData<String> = _text
 }

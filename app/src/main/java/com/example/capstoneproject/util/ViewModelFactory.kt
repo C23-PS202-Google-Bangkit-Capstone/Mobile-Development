@@ -3,6 +3,7 @@ package com.example.capstoneproject.util
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.capstoneproject.ui.home.HomeViewModel
 import com.example.capstoneproject.ui.register.RegisterViewModel
 import com.example.capstoneproject.util.di.Injection
 import com.example.capstoneproject.util.repository.Repository
@@ -12,11 +13,11 @@ class ViewModelFactory(private val repo: Repository) : ViewModelProvider.NewInst
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
-            /* modelClass.isAssignableFrom(MainViewModel::class.java) -> {
-                 MainViewModel(repo) as T
+             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                 HomeViewModel(repo) as T
              }
 
-             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+             /*modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                  LoginViewModel(repo) as T
              }*/
 

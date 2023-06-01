@@ -10,11 +10,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.Hero
 import com.example.capstoneproject.ListHeroAdapter
 import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentHomeBinding
+import com.example.capstoneproject.ui.home.adapter.LoadingAdapter
+import com.example.capstoneproject.ui.home.adapter.RecipesAdapter
+import com.example.capstoneproject.ui.register.RegisterViewModel
+import com.example.capstoneproject.util.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
@@ -24,15 +29,16 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private lateinit var rvHeroes: RecyclerView
-    private val list = ArrayList<Hero>()
+    private lateinit var rvRecipes: RecyclerView
+    private lateinit var adapter: RecipesAdapter
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var factory: ViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -41,11 +47,16 @@ class HomeFragment : Fragment() {
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
-        rvHeroes = binding.rvHeroes
-        rvHeroes.setHasFixedSize(true)
+        adapter = RecipesAdapter()
+        rvRecipes = binding.rvHeroes
+        rvRecipes.setHasFixedSize(true)
 
-        list.addAll(getListHeroes())
-        showRecyclerList()
+
+        factory = ViewModelFactory.getInstance(requireContext())
+        viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+
+        showRecyclerView()
+        showList()
 
         return root
     }
@@ -55,21 +66,18 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun getListHeroes(): ArrayList<Hero> {
-        val dataName = resources.getStringArray(R.array.data_name)
-        val dataDescription = resources.getStringArray(R.array.data_description)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
-        val listHero = ArrayList<Hero>()
-        for (i in dataName.indices) {
-            val hero = Hero(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
-            listHero.add(hero)
+    private fun showList() {
+        binding.rvHeroes.adapter = adapter.withLoadStateFooter(
+            footer = LoadingAdapter { adapter.retry() }
+        )
+        viewModel.getStories().observe(requireActivity()) {
+            adapter.submitData(lifecycle, it)
         }
-        return listHero
     }
 
-    private fun showRecyclerList() {
-        rvHeroes.layoutManager = GridLayoutManager(requireContext(), 2)
-        val listHeroAdapter = ListHeroAdapter(list)
-        rvHeroes.adapter = listHeroAdapter
+    private fun showRecyclerView() {
+        rvRecipes.layoutManager = GridLayoutManager(requireContext(), 2)
+        rvRecipes.setHasFixedSize(true)
+        rvRecipes.adapter = adapter
     }
 }
