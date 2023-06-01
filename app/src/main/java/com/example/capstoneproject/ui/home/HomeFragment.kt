@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Mengubah warna Action Bar
+        // Setting Action Bar
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 

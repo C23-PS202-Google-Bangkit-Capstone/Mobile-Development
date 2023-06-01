@@ -41,7 +41,7 @@ class ProfileFragment : Fragment() {
 
         // Mengubah warna Action Bar
         val actionBar = (activity as AppCompatActivity).supportActionBar
-        actionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#90FFE0")))
+        actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
         val recyclerView: RecyclerView = binding.rvBookmark
         recyclerView.setHasFixedSize(true)

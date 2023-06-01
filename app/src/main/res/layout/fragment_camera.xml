@@ -38,7 +38,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/dashed_border"
         android:text="S c a n"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
