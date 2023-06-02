@@ -1,10 +1,10 @@
-package com.example.capstoneproject.ui
+package com.example.capstoneproject.ui.detail
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.example.capstoneproject.R
 
 class DetailRecipeActivity : AppCompatActivity() {

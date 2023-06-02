@@ -2,22 +2,25 @@ package com.example.capstoneproject.util.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.example.capstoneproject.util.api.ApiService
+import com.example.capstoneproject.util.api.LoginRequest
+import com.example.capstoneproject.util.api.LoginResponse
 import com.example.capstoneproject.util.api.RecipesItem
 import com.example.capstoneproject.util.api.RegisterRequest
 import com.example.capstoneproject.util.api.RegisterResponse
 
-class Repository(private val apiService: ApiService) {
+class Repository(private val pref: UserPreferences, private val apiService: ApiService) {
 
     fun getRecipes(): LiveData<PagingData<RecipesItem>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 1
+                pageSize = 5
             ),
             pagingSourceFactory = {
                 SourcePaging(apiService)
@@ -39,4 +42,27 @@ class Repository(private val apiService: ApiService) {
                 emit(Result.Error(e.message.toString()))
             }
         }
+
+    fun requestLogin(loginReq: LoginRequest): LiveData<Result<LoginResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.postLogin(loginReq)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.d("Login", e.message.toString())
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun getUserData(): LiveData<UserModel> {
+        return pref.getUser().asLiveData()
+    }
+
+    suspend fun saveUserData(user: UserModel) {
+        pref.saveUser(user)
+    }
+
+    suspend fun logout() {
+        pref.logout()
+    }
 }

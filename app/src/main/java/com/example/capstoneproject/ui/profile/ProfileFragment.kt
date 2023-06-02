@@ -10,22 +10,24 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.capstoneproject.Hero
-import com.example.capstoneproject.ListHeroAdapter
 import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentProfileBinding
+import com.example.capstoneproject.ui.home.HomeViewModel
 import com.example.capstoneproject.ui.login.LoginActivity
+import com.example.capstoneproject.ui.login.LoginViewModel
 import com.example.capstoneproject.ui.register.RegisterActivity
+import com.example.capstoneproject.util.ViewModelFactory
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private val profileViewModel: ProfileViewModel by viewModels()
-
+    private lateinit var viewModel: ProfileViewModel
+    private lateinit var factory: ViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,11 +49,10 @@ class ProfileFragment : Fragment() {
         val recyclerView: RecyclerView = binding.rvBookmark
         recyclerView.setHasFixedSize(true)
 
-        val listHero = getListHeroes()
+        factory = ViewModelFactory.getInstance(requireContext())
+        viewModel = ViewModelProvider(this, factory)[ProfileViewModel::class.java]
 
-        val listHeroAdapter = ListHeroAdapter(listHero)
-        recyclerView.adapter = listHeroAdapter
-        recyclerView.layoutManager = GridLayoutManager(activity, 2)
+        setUserData()
     }
 
     override fun onDestroyView() {
@@ -59,16 +60,13 @@ class ProfileFragment : Fragment() {
         _binding = null
     }
 
-    private fun getListHeroes(): ArrayList<Hero> {
-        val dataName = resources.getStringArray(R.array.data_name)
-        val dataDescription = resources.getStringArray(R.array.data_description)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
-        val listHero = ArrayList<Hero>()
-        for (i in dataName.indices) {
-            val hero = Hero(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
-            listHero.add(hero)
+    private fun setUserData(){
+    viewModel.getUser().observe(viewLifecycleOwner){
+        if (it.isLogin){
+            binding.tvNama.text = it.userName
+            binding.tvKota.text = it.location
         }
-        return listHero
+    }
     }
 
     private fun setupButtons() {

@@ -15,15 +15,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.capstoneproject.Hero
-import com.example.capstoneproject.ListHeroAdapter
 import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentHomeBinding
 import com.example.capstoneproject.ui.home.adapter.LoadingAdapter
 import com.example.capstoneproject.ui.home.adapter.RecipesAdapter
-import com.example.capstoneproject.ui.register.RegisterViewModel
 import com.example.capstoneproject.util.ViewModelFactory
 import com.google.android.material.search.SearchView
 

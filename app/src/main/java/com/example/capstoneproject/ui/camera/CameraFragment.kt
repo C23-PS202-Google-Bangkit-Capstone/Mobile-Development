@@ -22,8 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.capstoneproject.R
-import com.example.capstoneproject.ui.IntermezzoActivity
-import com.example.capstoneproject.ui.login.LoginActivity
+import com.example.capstoneproject.ui.intermezzo.IntermezzoActivity
 import com.example.capstoneproject.util.tflite.Classifier
 import com.github.dhaval2404.imagepicker.ImagePicker
 

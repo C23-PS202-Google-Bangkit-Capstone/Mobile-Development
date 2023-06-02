@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.capstoneproject.ui.home.HomeViewModel
+import com.example.capstoneproject.ui.login.LoginViewModel
+import com.example.capstoneproject.ui.profile.ProfileViewModel
 import com.example.capstoneproject.ui.register.RegisterViewModel
 import com.example.capstoneproject.util.di.Injection
 import com.example.capstoneproject.util.repository.Repository
@@ -17,19 +19,19 @@ class ViewModelFactory(private val repo: Repository) : ViewModelProvider.NewInst
                  HomeViewModel(repo) as T
              }
 
-             /*modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                  LoginViewModel(repo) as T
-             }*/
+             }
 
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repo) as T
             }
 
-            /*modelClass.isAssignableFrom(OptionsViewModel::class.java) -> {
-                OptionsViewModel(repo) as T
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(repo) as T
             }
 
-            modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
+           /* modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
                 AddStoryViewModel(repo) as T
             }
 

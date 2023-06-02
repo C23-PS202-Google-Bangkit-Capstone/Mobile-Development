@@ -12,6 +12,11 @@ interface ApiService {
         @Body request: RegisterRequest
     ): RegisterResponse
 
+    @POST("/api/login")
+    suspend fun postLogin(
+        @Body request: LoginRequest
+    ): LoginResponse
+
     @GET("/api/getRecipeData")
     suspend fun getRecipes(
         @Query("page") page: Int? = null,

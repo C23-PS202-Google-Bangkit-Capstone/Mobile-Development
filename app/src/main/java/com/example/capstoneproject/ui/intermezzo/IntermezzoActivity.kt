@@ -1,4 +1,4 @@
-package com.example.capstoneproject.ui
+package com.example.capstoneproject.ui.intermezzo
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

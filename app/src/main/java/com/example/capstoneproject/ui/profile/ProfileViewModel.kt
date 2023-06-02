@@ -3,13 +3,13 @@ package com.example.capstoneproject.ui.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.capstoneproject.util.repository.Repository
+import com.example.capstoneproject.util.repository.UserModel
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel(private val repository: Repository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+    fun getUser(): LiveData<UserModel> {
+        return repository.getUserData()
     }
-    val text: LiveData<String> = _text
-
 
 }
