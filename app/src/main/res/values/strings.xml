@@ -49,4 +49,42 @@
     <string name="reload">Reload</string>
     <string name="location">Ini lokasi</string>
     <string name="nama">Ini Nama</string>
+
+    <string-array name="provinces">
+        <item>Aceh</item>
+        <item>Bali</item>
+        <item>Banten</item>
+        <item>Bengkulu</item>
+        <item>Gorontalo</item>
+        <item>Jakarta</item>
+        <item>Jambi</item>
+        <item>West Java</item>
+        <item>Central Java</item>
+        <item>East Java</item>
+        <item>West Kalimantan</item>
+        <item>South Kalimantan</item>
+        <item>Central Kalimantan</item>
+        <item>East Kalimantan</item>
+        <item>North Kalimantan</item>
+        <item>Bangka Belitung Islands</item>
+        <item>Riau Islands</item>
+        <item>Lampung</item>
+        <item>Maluku</item>
+        <item>North Maluku</item>
+        <item>West Nusa Tenggara</item>
+        <item>East Nusa Tenggara</item>
+        <item>Papua</item>
+        <item>West Papua</item>
+        <item>Riau</item>
+        <item>West Sulawesi</item>
+        <item>South Sulawesi</item>
+        <item>Central Sulawesi</item>
+        <item>Southeast Sulawesi</item>
+        <item>North Sulawesi</item>
+        <item>West Sumatra</item>
+        <item>South Sumatra</item>
+        <item>North Sumatra</item>
+        <item>Yogyakarta</item>
+    </string-array>
+
 </resources>

@@ -88,11 +88,9 @@ class CameraFragment : Fragment() {
                 Toast.makeText(activity, "Unknown", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(activity, result[0].id, Toast.LENGTH_SHORT).show()
-
+                val Intent = Intent(activity, IntermezzoActivity::class.java)
+                startActivity(Intent)
             }
-
-            val Intent = Intent(activity, IntermezzoActivity::class.java)
-            startActivity(Intent)
         }
 
         return view
