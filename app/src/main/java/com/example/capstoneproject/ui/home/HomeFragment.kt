@@ -109,13 +109,13 @@ class HomeFragment : Fragment() {
     }
 
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_search -> {
                 // Tindakan yang ingin Anda lakukan saat menu pencarian diklik
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

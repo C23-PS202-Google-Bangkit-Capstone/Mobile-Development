@@ -85,7 +85,7 @@ class Classifier(assetManager: AssetManager, modelPath: String, labelPath: Strin
         return byteBuffer
     }
 
-    private fun getSortedResult(labelProbArray: Array<FloatArray>): List<Classifier.Recognition> {
+    private fun getSortedResult(labelProbArray: Array<FloatArray>): List<Recognition> {
         Log.d(
             "Classifier",
             "List Size:(%d, %d, %d)".format(
@@ -106,7 +106,7 @@ class Classifier(assetManager: AssetManager, modelPath: String, labelPath: Strin
             val confidence = labelProbArray[0][i]
             if (confidence >= THRESHOLD) {
                 pq.add(
-                    Classifier.Recognition(
+                    Recognition(
                         "" + i,
                         if (lableList.size > i) lableList[i] else "Unknown", confidence
                     )

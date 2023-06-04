@@ -9,6 +9,7 @@ import com.example.capstoneproject.util.repository.Repository
 import com.example.capstoneproject.util.repository.UserPreferences
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore("settings")
+
 object Injection {
     fun provideRepository(context: Context): Repository {
         val preferences = UserPreferences.getInstance(context.dataStore)

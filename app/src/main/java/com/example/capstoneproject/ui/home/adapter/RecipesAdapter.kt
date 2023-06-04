@@ -1,11 +1,17 @@
 package com.example.capstoneproject.ui.home.adapter
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.databinding.ItemRowHeroBinding
+import com.example.capstoneproject.ui.detail.DetailRecipeActivity
+
 import com.example.capstoneproject.util.api.RecipesItem
 
 class RecipesAdapter : PagingDataAdapter<RecipesItem, RecipesAdapter.ViewHolder>(DIFF_CALLBACK) {
@@ -22,14 +28,25 @@ class RecipesAdapter : PagingDataAdapter<RecipesItem, RecipesAdapter.ViewHolder>
         }
     }
 
-    class ViewHolder(val binding: ItemRowHeroBinding) :
+    class ViewHolder(private val binding: ItemRowHeroBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: RecipesItem) {
             with(binding) {
                 tvItemName.text = recipe.recipeName
                 tvItemLocation.text = recipe.location
             }
-
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailRecipeActivity::class.java).apply {
+                    putExtra(DetailRecipeActivity.EXTRA_DATA, recipe)
+                }
+                val optionsCompat: ActivityOptionsCompat =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        itemView.context as Activity,
+                        Pair(binding.tvItemName, "name"),
+                        Pair(binding.tvItemLocation, "location"),
+                    )
+                it.context.startActivity(intent, optionsCompat.toBundle())
+            }
         }
     }
 

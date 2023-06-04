@@ -33,7 +33,7 @@ class CameraFragment : Fragment() {
         private const val REQUEST_CODE_IMAGE_PICKER = 100
     }
 
-    private val mInputSize = 128
+    private val mInputSize = 224
     private val mModelPath = "tflite_model.tflite"
     private val mLabelPath = "label.txt"
 
@@ -87,7 +87,7 @@ class CameraFragment : Fragment() {
             if (result.isEmpty()) {
                 Toast.makeText(activity, "Unknown", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(activity, result[0].title, Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, result[0].id, Toast.LENGTH_SHORT).show()
 
             }
 
@@ -161,5 +161,4 @@ class CameraFragment : Fragment() {
             }
         }
     }
-
 }

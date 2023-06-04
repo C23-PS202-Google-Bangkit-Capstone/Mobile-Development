@@ -1,7 +1,6 @@
 package com.example.capstoneproject.ui.profile
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.capstoneproject.util.repository.Repository
 import com.example.capstoneproject.util.repository.UserModel

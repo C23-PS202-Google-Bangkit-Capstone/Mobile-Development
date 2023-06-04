@@ -5,16 +5,33 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.capstoneproject.R
+import com.example.capstoneproject.databinding.ActivityDetailRecipeBinding
+import com.example.capstoneproject.util.api.RecipesItem
 
 class DetailRecipeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDetailRecipeBinding
+
+    companion object {
+        const val EXTRA_DATA = "extra_data"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_recipe)
+        binding = ActivityDetailRecipeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         // Aktifkan tombol kembali pada ActionBar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
         supportActionBar?.title = "Description"
+
+
+        val detail = intent.getParcelableExtra<RecipesItem>(EXTRA_DATA) as RecipesItem
+
+        binding.apply {
+            tvName.text = detail.recipeName
+            tvDesc.text = detail.recipeDetail
+            tvLocation.text = detail.location
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -24,6 +41,7 @@ class DetailRecipeActivity : AppCompatActivity() {
                 onBackPressed()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

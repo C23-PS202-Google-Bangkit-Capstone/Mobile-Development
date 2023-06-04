@@ -17,6 +17,7 @@ import com.example.capstoneproject.util.repository.Result
 import com.example.capstoneproject.util.repository.UserModel
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
@@ -33,22 +34,21 @@ class LoginActivity : AppCompatActivity() {
         binding.fabBack.setOnClickListener {
             backClicked()
         }
-        binding.btnSignin.setOnClickListener{
+        binding.btnSignin.setOnClickListener {
             loginClicked()
         }
     }
 
-    private fun loginClicked(){
+    private fun loginClicked() {
         val credential = LoginRequest(
             binding.edEmail.text.toString(),
             binding.edPassword.text.toString()
         )
 
-        viewModel.postLogin(credential).observe(this){
-            when(it){
-                is Result.Success->{
+        viewModel.postLogin(credential).observe(this) {
+            when (it) {
+                is Result.Success -> {
                     val response = it.data
-                    println("liat "+response.loginResult.userId)
                     saveUserData(
                         UserModel(
                             response.token,
@@ -57,14 +57,15 @@ class LoginActivity : AppCompatActivity() {
                             true
                         )
                     )
-
+                    startActivity(Intent(this, MainActivity::class.java))
                 }
-                is Result.Loading ->{
+
+                is Result.Loading -> {
 
                 }
 
                 is Result.Error -> {
-                Toast.makeText(this, "Login gagal", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Login gagal", Toast.LENGTH_SHORT).show()
                 }
 
                 else -> {

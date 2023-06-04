@@ -15,13 +15,13 @@ class ViewModelFactory(private val repo: Repository) : ViewModelProvider.NewInst
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
-             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                 HomeViewModel(repo) as T
-             }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(repo) as T
+            }
 
-             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
-                 LoginViewModel(repo) as T
-             }
+            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+                LoginViewModel(repo) as T
+            }
 
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repo) as T
@@ -31,13 +31,13 @@ class ViewModelFactory(private val repo: Repository) : ViewModelProvider.NewInst
                 ProfileViewModel(repo) as T
             }
 
-           /* modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
-                AddStoryViewModel(repo) as T
-            }
+            /* modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
+                 AddStoryViewModel(repo) as T
+             }
 
-            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
-                MapsViewModel(repo) as T
-            }*/
+             modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
+                 MapsViewModel(repo) as T
+             }*/
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

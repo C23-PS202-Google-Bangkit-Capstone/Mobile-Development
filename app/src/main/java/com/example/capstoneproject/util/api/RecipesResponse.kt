@@ -23,4 +23,4 @@ data class RecipesItem(
     @field:SerializedName("description")
     val recipeDetail: String,
 
-) : Parcelable
+    ) : Parcelable

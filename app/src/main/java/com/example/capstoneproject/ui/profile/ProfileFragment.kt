@@ -9,15 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentProfileBinding
-import com.example.capstoneproject.ui.home.HomeViewModel
 import com.example.capstoneproject.ui.login.LoginActivity
-import com.example.capstoneproject.ui.login.LoginViewModel
 import com.example.capstoneproject.ui.register.RegisterActivity
 import com.example.capstoneproject.util.ViewModelFactory
 
@@ -60,13 +55,13 @@ class ProfileFragment : Fragment() {
         _binding = null
     }
 
-    private fun setUserData(){
-    viewModel.getUser().observe(viewLifecycleOwner){
-        if (it.isLogin){
-            binding.tvNama.text = it.userName
-            binding.tvKota.text = it.location
+    private fun setUserData() {
+        viewModel.getUser().observe(viewLifecycleOwner) {
+            if (it.isLogin) {
+                binding.tvNama.text = it.userName
+                binding.tvKota.text = it.location
+            }
         }
-    }
     }
 
     private fun setupButtons() {
