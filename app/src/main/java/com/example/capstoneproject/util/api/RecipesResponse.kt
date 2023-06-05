@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 data class RecipesResponse(
-    @field:SerializedName("listRecipe")
+    @field:SerializedName("listStory")
     val listRecipes: List<RecipesItem>,
 )
 

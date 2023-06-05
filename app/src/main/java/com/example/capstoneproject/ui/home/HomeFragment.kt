@@ -21,7 +21,8 @@ import com.example.capstoneproject.databinding.FragmentHomeBinding
 import com.example.capstoneproject.ui.home.adapter.LoadingAdapter
 import com.example.capstoneproject.ui.home.adapter.RecipesAdapter
 import com.example.capstoneproject.util.ViewModelFactory
-import com.google.android.material.search.SearchView
+import android.widget.SearchView
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 
 class HomeFragment : Fragment() {
 
@@ -35,6 +36,7 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: RecipesAdapter
     private lateinit var viewModel: HomeViewModel
     private lateinit var factory: ViewModelFactory
+    private lateinit var searchView: SearchView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,6 +54,7 @@ class HomeFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+
         adapter = RecipesAdapter()
         rvRecipes = binding.rvHeroes
         rvRecipes.setHasFixedSize(true)
@@ -59,6 +62,7 @@ class HomeFragment : Fragment() {
 
         factory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+
 
         showRecyclerView()
         showList()
@@ -85,6 +89,7 @@ class HomeFragment : Fragment() {
         rvRecipes.setHasFixedSize(true)
         rvRecipes.adapter = adapter
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.action_bar_menu, menu)
@@ -119,6 +124,5 @@ class HomeFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 
 }

@@ -17,6 +17,13 @@ interface ApiService {
         @Body request: LoginRequest
     ): LoginResponse
 
+    @GET("/api/search")
+    suspend fun getRecipesSearch(
+        @Query("q") q: String,
+        @Query("page") page: Int? = null,
+        @Query("size") size: Int? = null,
+    ): RecipesResponse
+
     @GET("/api/getRecipeData")
     suspend fun getRecipes(
         @Query("page") page: Int? = null,
