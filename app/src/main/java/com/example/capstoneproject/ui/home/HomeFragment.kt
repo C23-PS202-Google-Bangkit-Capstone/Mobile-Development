@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: RecipesAdapter
     private lateinit var viewModel: HomeViewModel
     private lateinit var factory: ViewModelFactory
-    private lateinit var searchView: SearchView
+    private lateinit var search: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,6 +55,7 @@ class HomeFragment : Fragment() {
         setHasOptionsMenu(true)
 
 
+
         adapter = RecipesAdapter()
         rvRecipes = binding.rvHeroes
         rvRecipes.setHasFixedSize(true)
@@ -66,6 +67,7 @@ class HomeFragment : Fragment() {
 
         showRecyclerView()
         showList()
+
 
         return root
     }
@@ -83,7 +85,15 @@ class HomeFragment : Fragment() {
             adapter.submitData(lifecycle, it)
         }
     }
+    private fun showListSearch() {
 
+        binding.rvHeroes.adapter = adapter.withLoadStateFooter(
+            footer = LoadingAdapter { adapter.retry() }
+        )
+        viewModel.getStoriesSearch(search).observe(requireActivity()) {
+            adapter.submitData(lifecycle, it)
+        }
+    }
     private fun showRecyclerView() {
         rvRecipes.layoutManager = GridLayoutManager(requireContext(), 2)
         rvRecipes.setHasFixedSize(true)
@@ -110,6 +120,21 @@ class HomeFragment : Fragment() {
 
         actionBar?.customView = customView
 
+
+        searchView?.setOnQueryTextListener(object : OnQueryTextListener,
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                search = query.toString()
+                showListSearch()
+                showRecyclerView()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -124,5 +149,4 @@ class HomeFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }

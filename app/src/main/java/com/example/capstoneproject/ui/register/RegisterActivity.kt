@@ -67,6 +67,7 @@ class RegisterActivity : AppCompatActivity() {
             val selectedProvince = binding.spinnerProvinsi.selectedItem.toString() // Mengambil provinsi yang dipilih dari Spinner
             viewModel.postRegister(
                 binding.edEmail.text.toString(),
+                binding.edUsername.text.toString(),
                 binding.edPassword.text.toString(),
                 binding.edPhone.text.toString(),
                 selectedProvince // Mengirim provinsi yang dipilih ke fungsi postRegister()

@@ -13,4 +13,7 @@ class HomeViewModel(private val repo: Repository) : ViewModel() {
     fun getStories(): LiveData<PagingData<RecipesItem>> {
         return repo.getRecipes().cachedIn(viewModelScope)
     }
+    fun getStoriesSearch(recipeName: String): LiveData<PagingData<RecipesItem>> {
+        return repo.getRecipesSearch(recipeName).cachedIn(viewModelScope)
+    }
 }

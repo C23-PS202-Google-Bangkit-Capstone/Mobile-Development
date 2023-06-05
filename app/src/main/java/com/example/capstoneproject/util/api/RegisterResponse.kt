@@ -7,6 +7,7 @@ data class RegisterResponse(
 
 data class RegisterItem(
     val email: String,
+    val username: String,
     val password: String,
     val phone_number: String,
     val location: String
@@ -14,6 +15,7 @@ data class RegisterItem(
 
 data class RegisterRequest(
     val email: String? = null,
+    val username: String? = null,
     val password: String? = null,
     val phone_number: String? = null,
     val location: String? = null

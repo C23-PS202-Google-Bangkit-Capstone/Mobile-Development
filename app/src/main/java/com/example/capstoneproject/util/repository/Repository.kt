@@ -28,13 +28,30 @@ class Repository(private val pref: UserPreferences, private val apiService: ApiS
         ).liveData
     }
 
-    fun requestRegister(email: String, password: String, phoneNumber: String, location: String)
+    fun getRecipesSearch(recipeName: String): LiveData<PagingData<RecipesItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = {
+                SourcePaging(apiService)
+            }
+        ).liveData
+    }
+
+    fun requestRegister(
+        email: String,
+        username: String,
+        password: String,
+        phoneNumber: String,
+        location: String
+    )
             : LiveData<Result<RegisterResponse>> =
         liveData {
             emit(Result.Loading)
             try {
                 val response = apiService.postRegister(
-                    RegisterRequest(email, password, phoneNumber, location)
+                    RegisterRequest(email,username, password, phoneNumber, location)
                 )
                 emit(Result.Success(response))
             } catch (e: Exception) {
