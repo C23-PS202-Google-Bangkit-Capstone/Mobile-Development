@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
     private lateinit var factory: ViewModelFactory
     private lateinit var search: String
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -125,6 +126,7 @@ class HomeFragment : Fragment() {
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 search = query.toString()
+                println(search)
                 showListSearch()
                 showRecyclerView()
                 return true

@@ -34,7 +34,7 @@ class Repository(private val pref: UserPreferences, private val apiService: ApiS
                 pageSize = 5
             ),
             pagingSourceFactory = {
-                SourcePaging(apiService)
+                SourcePagingSearch(apiService, recipeName)
             }
         ).liveData
     }
