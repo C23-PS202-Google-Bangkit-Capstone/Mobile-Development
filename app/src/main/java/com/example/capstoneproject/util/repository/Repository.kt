@@ -40,8 +40,8 @@ class Repository(private val pref: UserPreferences, private val apiService: ApiS
     }
 
     fun requestRegister(
-        email: String,
         username: String,
+        email: String,
         password: String,
         phoneNumber: String,
         location: String
@@ -51,7 +51,7 @@ class Repository(private val pref: UserPreferences, private val apiService: ApiS
             emit(Result.Loading)
             try {
                 val response = apiService.postRegister(
-                    RegisterRequest(email,username, password, phoneNumber, location)
+                    RegisterRequest(username,email, password, phoneNumber, location)
                 )
                 emit(Result.Success(response))
             } catch (e: Exception) {

@@ -87,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 is Result.Loading -> {
-                    // Handle loading state if needed
+                    Toast.makeText(this, "Login proses", Toast.LENGTH_SHORT).show()
                 }
 
                 is Result.Error -> {

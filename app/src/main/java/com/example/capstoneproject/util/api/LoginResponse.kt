@@ -27,9 +27,12 @@ data class LoginRequest(
 
 data class LoginResult(
 
-    @field:SerializedName("UserID")
+    @field:SerializedName("user_id")
     val userId: String,
 
-    @field:SerializedName("Location")
+    @field:SerializedName("username")
+    val username: String,
+
+    @field:SerializedName("location")
     val location: String
 )
