@@ -17,6 +17,11 @@ interface ApiService {
         @Body request: LoginRequest
     ): LoginResponse
 
+    @GET("/api/getAdditionalData")
+    suspend fun getAdditionalData(
+        @Query("fruit_id") fruitId: Int,
+    ): IntermezzoResponse
+
     @GET("/api/search")
     suspend fun getRecipesSearch(
         @Query("recipe_name") recipeName: String,

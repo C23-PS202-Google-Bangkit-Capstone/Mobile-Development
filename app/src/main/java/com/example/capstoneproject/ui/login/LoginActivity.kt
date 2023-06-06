@@ -77,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
                     saveUserData(
                         UserModel(
                             response.token,
-                            response.loginResult.userId,
+                            response.loginResult.username,
                             response.loginResult.location,
                             true
                         )

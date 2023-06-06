@@ -9,6 +9,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.example.capstoneproject.util.api.ApiService
+import com.example.capstoneproject.util.api.IntermezzoResponse
 import com.example.capstoneproject.util.api.LoginRequest
 import com.example.capstoneproject.util.api.LoginResponse
 import com.example.capstoneproject.util.api.RecipesItem
@@ -37,6 +38,17 @@ class Repository(private val pref: UserPreferences, private val apiService: ApiS
                 SourcePagingSearch(apiService, recipeName)
             }
         ).liveData
+    }
+
+    fun getIntermezzo(id: Int): LiveData<Result<IntermezzoResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getAdditionalData(id)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.d("Signup", e.message.toString())
+            emit(Result.Error(e.message.toString()))
+        }
     }
 
     fun requestRegister(

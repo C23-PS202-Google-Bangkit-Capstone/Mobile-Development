@@ -23,6 +23,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.capstoneproject.R
 import com.example.capstoneproject.ui.intermezzo.IntermezzoActivity
+import com.example.capstoneproject.ui.intermezzo.IntermezzoActivity.Companion.EXTRA_ID
+import com.example.capstoneproject.ui.intermezzo.IntermezzoActivity.Companion.EXTRA_TITLE
 import com.example.capstoneproject.util.tflite.Classifier
 import com.github.dhaval2404.imagepicker.ImagePicker
 
@@ -85,14 +87,16 @@ class CameraFragment : Fragment() {
             val result = classifier.recognizeImage(bitmap)
 
             if (result.isEmpty()) {
-                Toast.makeText(activity, "Unknown", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Benda tidak dapat terdeteksi, mohon foto ulang", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(activity, result[0].title, Toast.LENGTH_SHORT).show()
-
+                //Toast.makeText(activity, result[0].id, Toast.LENGTH_SHORT).show()
+                val intent = Intent(activity, IntermezzoActivity::class.java)
+                intent.putExtra(EXTRA_ID,result[0].id)
+                intent.putExtra(EXTRA_TITLE, result[0].title)
+                startActivity(intent)
             }
 
-            val Intent = Intent(activity, IntermezzoActivity::class.java)
-            startActivity(Intent)
+
         }
 
         return view
