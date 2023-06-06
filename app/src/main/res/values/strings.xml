@@ -9,41 +9,8 @@
 
 
     //contoh aja
-    <string name="heroes_name">Nama Pahlawan</string>
+    <string name="recipe_name">Recipe Name</string>
     <string name="description">Ini deskripsi</string>
-    <string-array name="data_name">
-        <item>Universitas Ahmad Dahlan Yogyakarta Jaya Baya</item>
-        <item>Ahmad Yani</item>
-        <item>Sutomo</item>
-        <item>Gatot Soebroto</item>
-        <item>Ki Hadjar Dewantara</item>
-        <item>Mohammad Hatta</item>
-        <item>Soedirman</item>
-        <item>Soekarno</item>
-        <item>Soepomo</item>
-    </string-array>
-    <string-array name="data_description">
-        <item>Jakarta</item>
-        <item>Yogyakarta</item>
-        <item>Banten</item>
-        <item>Jawa Tengah</item>
-        <item>Aji Barang</item>
-        <item>Sulawesi Selatan</item>
-        <item>Bima</item>
-        <item>Madiun</item>
-        <item>Sumatera Barat</item>
-    </string-array>
-    <integer-array name="data_photo">
-        <item>@drawable/ahmad_dahlan</item>
-        <item>@drawable/ahmad_yani</item>
-        <item>@drawable/bung_tomo</item>
-        <item>@drawable/gatot_subroto</item>
-        <item>@drawable/ki_hadjar_dewantara</item>
-        <item>@drawable/mohammad_hatta</item>
-        <item>@drawable/sudirman</item>
-        <item>@drawable/sukarno</item>
-        <item>@drawable/supomo</item>
-    </integer-array>
 
     <string name="timeout">Timeout</string>
     <string name="reload">Reload</string>

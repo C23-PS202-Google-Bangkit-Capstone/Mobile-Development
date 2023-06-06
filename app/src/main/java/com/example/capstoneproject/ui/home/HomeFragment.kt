@@ -1,5 +1,6 @@
 package com.example.capstoneproject.ui.home
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -23,6 +24,8 @@ import com.example.capstoneproject.ui.home.adapter.RecipesAdapter
 import com.example.capstoneproject.util.ViewModelFactory
 import android.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import com.example.capstoneproject.MainActivity
+import com.example.capstoneproject.ui.SearchActivity
 
 class HomeFragment : Fragment() {
 
@@ -105,8 +108,8 @@ class HomeFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.action_bar_menu, menu)
 
-        val searchItem: MenuItem? = menu.findItem(R.id.menu_search)
-        val searchView: SearchView? = searchItem?.actionView as? SearchView
+//        val searchItem: MenuItem? = menu.findItem(R.id.menu_search)
+//        val searchView: SearchView? = searchItem?.actionView as? SearchView
 
         // Mengganti judul dengan gambar dan teks
         val actionBar = (activity as AppCompatActivity).supportActionBar
@@ -122,20 +125,20 @@ class HomeFragment : Fragment() {
         actionBar?.customView = customView
 
 
-        searchView?.setOnQueryTextListener(object : OnQueryTextListener,
-            SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                search = query.toString()
-                println(search)
-                showListSearch()
-                showRecyclerView()
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return true
-            }
-        })
+//        searchView?.setOnQueryTextListener(object : OnQueryTextListener,
+//            SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                search = query.toString()
+//                println(search)
+//                showListSearch()
+//                showRecyclerView()
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                return true
+//            }
+//        })
 
         super.onCreateOptionsMenu(menu, inflater)
     }
@@ -144,7 +147,8 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_search -> {
-                // Tindakan yang ingin Anda lakukan saat menu pencarian diklik
+                val intent = Intent(requireActivity(), SearchActivity::class.java)
+                startActivity(intent)
                 true
             }
 
