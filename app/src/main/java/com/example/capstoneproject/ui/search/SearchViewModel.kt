@@ -1,4 +1,4 @@
-package com.example.capstoneproject.ui.home
+package com.example.capstoneproject.ui.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -8,10 +8,8 @@ import androidx.paging.cachedIn
 import com.example.capstoneproject.util.api.RecipesItem
 import com.example.capstoneproject.util.repository.Repository
 
-class HomeViewModel(private val repo: Repository) : ViewModel() {
-
-    fun getStories(): LiveData<PagingData<RecipesItem>> {
-        return repo.getRecipes().cachedIn(viewModelScope)
+class SearchViewModel(private val repo: Repository) : ViewModel() {
+    fun getStoriesSearch(recipeName: String): LiveData<PagingData<RecipesItem>> {
+        return repo.getRecipesSearch(recipeName).cachedIn(viewModelScope)
     }
-
 }

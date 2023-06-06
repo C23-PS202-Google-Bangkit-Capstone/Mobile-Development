@@ -1,6 +1,7 @@
 package com.example.capstoneproject.ui.home.adapter
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,10 +10,11 @@ import androidx.core.util.Pair
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.capstoneproject.databinding.ItemRowHeroBinding
 import com.example.capstoneproject.ui.detail.DetailRecipeActivity
-
 import com.example.capstoneproject.util.api.RecipesItem
+import com.squareup.picasso.Picasso
 
 class RecipesAdapter : PagingDataAdapter<RecipesItem, RecipesAdapter.ViewHolder>(DIFF_CALLBACK) {
 
@@ -34,6 +36,9 @@ class RecipesAdapter : PagingDataAdapter<RecipesItem, RecipesAdapter.ViewHolder>
             with(binding) {
                 tvItemName.text = recipe.recipeName
                 tvItemLocation.text = recipe.location
+                Picasso.get()
+                    .load(recipe.photoUrl)
+                    .into(ivItemPhoto)
             }
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetailRecipeActivity::class.java).apply {
@@ -42,6 +47,7 @@ class RecipesAdapter : PagingDataAdapter<RecipesItem, RecipesAdapter.ViewHolder>
                 val optionsCompat: ActivityOptionsCompat =
                     ActivityOptionsCompat.makeSceneTransitionAnimation(
                         itemView.context as Activity,
+                        Pair(binding.ivItemPhoto, "image"),
                         Pair(binding.tvItemName, "name"),
                         Pair(binding.tvItemLocation, "location"),
                     )

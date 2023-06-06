@@ -8,6 +8,7 @@ import com.example.capstoneproject.ui.intermezzo.IntermezzoViewModel
 import com.example.capstoneproject.ui.login.LoginViewModel
 import com.example.capstoneproject.ui.profile.ProfileViewModel
 import com.example.capstoneproject.ui.register.RegisterViewModel
+import com.example.capstoneproject.ui.search.SearchViewModel
 import com.example.capstoneproject.util.di.Injection
 import com.example.capstoneproject.util.repository.Repository
 
@@ -34,6 +35,10 @@ class ViewModelFactory(private val repo: Repository) : ViewModelProvider.NewInst
 
             modelClass.isAssignableFrom(IntermezzoViewModel::class.java) -> {
                 IntermezzoViewModel(repo) as T
+            }
+
+            modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
+                SearchViewModel(repo) as T
             }
             /* modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
                  AddStoryViewModel(repo) as T

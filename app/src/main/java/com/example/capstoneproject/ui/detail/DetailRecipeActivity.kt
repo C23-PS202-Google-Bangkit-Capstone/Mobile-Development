@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.capstoneproject.databinding.ActivityDetailRecipeBinding
 import com.example.capstoneproject.util.api.RecipesItem
+import com.squareup.picasso.Picasso
 
 class DetailRecipeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailRecipeBinding
@@ -31,6 +32,9 @@ class DetailRecipeActivity : AppCompatActivity() {
             tvName.text = detail.recipeName
             tvDesc.text = detail.recipeDetail
             tvLocation.text = detail.location
+            Picasso.get()
+                .load(detail.photoUrl)
+                .into(imageView2)
         }
     }
 

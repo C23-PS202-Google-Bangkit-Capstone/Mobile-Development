@@ -2,6 +2,8 @@ package com.example.capstoneproject.ui.camera
 
 import android.Manifest
 import android.app.Activity
+import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -9,6 +11,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +30,12 @@ import com.example.capstoneproject.ui.intermezzo.IntermezzoActivity.Companion.EX
 import com.example.capstoneproject.ui.intermezzo.IntermezzoActivity.Companion.EXTRA_TITLE
 import com.example.capstoneproject.util.tflite.Classifier
 import com.github.dhaval2404.imagepicker.ImagePicker
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 
 class CameraFragment : Fragment() {
@@ -165,4 +174,7 @@ class CameraFragment : Fragment() {
             }
         }
     }
+
+
+
 }

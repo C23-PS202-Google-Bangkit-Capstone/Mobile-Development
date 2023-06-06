@@ -22,10 +22,7 @@ import com.example.capstoneproject.databinding.FragmentHomeBinding
 import com.example.capstoneproject.ui.home.adapter.LoadingAdapter
 import com.example.capstoneproject.ui.home.adapter.RecipesAdapter
 import com.example.capstoneproject.util.ViewModelFactory
-import android.widget.SearchView
-import androidx.appcompat.widget.SearchView.OnQueryTextListener
-import com.example.capstoneproject.MainActivity
-import com.example.capstoneproject.ui.SearchActivity
+import com.example.capstoneproject.ui.search.SearchActivity
 
 class HomeFragment : Fragment() {
 
@@ -89,15 +86,7 @@ class HomeFragment : Fragment() {
             adapter.submitData(lifecycle, it)
         }
     }
-    private fun showListSearch() {
 
-        binding.rvHeroes.adapter = adapter.withLoadStateFooter(
-            footer = LoadingAdapter { adapter.retry() }
-        )
-        viewModel.getStoriesSearch(search).observe(requireActivity()) {
-            adapter.submitData(lifecycle, it)
-        }
-    }
     private fun showRecyclerView() {
         rvRecipes.layoutManager = GridLayoutManager(requireContext(), 2)
         rvRecipes.setHasFixedSize(true)

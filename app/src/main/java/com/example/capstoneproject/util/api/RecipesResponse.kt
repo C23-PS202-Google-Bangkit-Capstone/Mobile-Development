@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 data class RecipesResponse(
-    @field:SerializedName("listStory")
+    @field:SerializedName("listRecipe")
     val listRecipes: List<RecipesItem>,
 )
 
@@ -23,4 +23,6 @@ data class RecipesItem(
     @field:SerializedName("description")
     val recipeDetail: String,
 
+    @field:SerializedName("photoUrl")
+    val photoUrl: String
     ) : Parcelable
