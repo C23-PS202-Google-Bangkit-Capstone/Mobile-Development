@@ -55,17 +55,17 @@ class IntermezzoActivity : AppCompatActivity() {
             binding.ivCeklis.isVisible = true
         }
         val title = intent.getStringExtra(EXTRA_TITLE)
-        Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
 
         viewModel.getIntermezzo(id).observe(this){
             when (it) {
                 is Result.Success -> {
                     binding.textView3.text = it.data.intermezzoResult.description
-                    Toast.makeText(this, "BERHASIL", Toast.LENGTH_SHORT).show()
+                   // Toast.makeText(this, "BERHASIL", Toast.LENGTH_SHORT).show()
                 }
 
                 is Result.Error -> {
-                    Toast.makeText(this, "GAGAL", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "GAGAL", Toast.LENGTH_SHORT).show()
                 }
 
                 else -> {}

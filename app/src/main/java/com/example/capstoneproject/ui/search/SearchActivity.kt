@@ -50,9 +50,9 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                /*search = newText.toString()
+                search = newText.toString()
                 showListSearch()
-                showRecyclerView()*/
+                showRecyclerView()
                 return true
             }
 

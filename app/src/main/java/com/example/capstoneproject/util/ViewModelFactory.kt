@@ -3,6 +3,7 @@ package com.example.capstoneproject.util
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.capstoneproject.ui.camera.CameraViewModel
 import com.example.capstoneproject.ui.home.HomeViewModel
 import com.example.capstoneproject.ui.intermezzo.IntermezzoViewModel
 import com.example.capstoneproject.ui.login.LoginViewModel
@@ -39,6 +40,10 @@ class ViewModelFactory(private val repo: Repository) : ViewModelProvider.NewInst
 
             modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
                 SearchViewModel(repo) as T
+            }
+
+            modelClass.isAssignableFrom(CameraViewModel::class.java) -> {
+                CameraViewModel(repo) as T
             }
             /* modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
                  AddStoryViewModel(repo) as T
