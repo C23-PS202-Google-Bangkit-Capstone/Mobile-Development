@@ -22,7 +22,7 @@ class ProfileViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun getStoriesRecommendation(recipeLocation: String): LiveData<PagingData<RecipesItem>> {
+    fun getRecipesRecommendation(recipeLocation: String): LiveData<PagingData<RecipesItem>> {
         return repository.getRecipesRecommendation(recipeLocation).cachedIn(viewModelScope)
     }
 }

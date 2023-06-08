@@ -3,6 +3,7 @@ package com.example.capstoneproject.ui.register
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -39,10 +40,9 @@ class RegisterActivity : AppCompatActivity() {
 
         // Menginisialisasi Spinner dan mengatur teks hint
         val spinnerProvinsi: Spinner = findViewById(R.id.spinner_provinsi)
-        val provinces = resources.getStringArray(R.array.provinces)
 
         // Tambahkan teks hint "Pilih Provinsi" sebagai item pertama dalam daftar provinsi
-        val provincesWithHint = listOf("Select Province") + provinces.toList()
+        val provincesWithHint = resources.getStringArray(R.array.provinces).toList()
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, provincesWithHint)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -59,33 +59,37 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerClicked() {
-        if (binding.edPassword.text?.length!! < 8) {
-            Toast.makeText(this, "SALAH", Toast.LENGTH_SHORT).show()
+        val username = binding.edUsername.text.toString().trim()
+        val email = binding.edEmail.text.toString().trim()
+        val password = binding.edPassword.text.toString().trim()
+        val phone = binding.edPhone.text.toString().trim()
+        val selectedProvince = binding.spinnerProvinsi.selectedItem.toString()
+
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty() || selectedProvince == "Pilih Provinsi") {
+            Toast.makeText(this, "Mohon lengkapi semua field", Toast.LENGTH_SHORT).show()
         } else {
-            val selectedProvince =
-                binding.spinnerProvinsi.selectedItem.toString() // Mengambil provinsi yang dipilih dari Spinner
-            viewModel.postRegister(
-                binding.edUsername.text.toString(),
-                binding.edEmail.text.toString(),
-                binding.edPassword.text.toString(),
-                binding.edPhone.text.toString(),
-                selectedProvince // Mengirim provinsi yang dipilih ke fungsi postRegister()
-
-            ).observe(this) {
-                when (it) {
-                    is Result.Success -> {
-                        Toast.makeText(this, "BERHASIL", Toast.LENGTH_SHORT).show()
+            if (password.length < 8) {
+                Toast.makeText(this, "Kata sandi harus terdiri dari minimal 8 karakter", Toast.LENGTH_SHORT).show()
+            } else {
+                binding.progressBar.visibility = View.VISIBLE
+                viewModel.postRegister(username, email, password, phone, selectedProvince).observe(this) {
+                    when (it) {
+                        is Result.Success -> {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show()
+                            onBackPressed()
+                        }
+                        is Result.Error -> {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(this, "Pendaftaran Gagal", Toast.LENGTH_SHORT).show()
+                        }
+                        else -> {}
                     }
-
-                    is Result.Error -> {
-                        Toast.makeText(this, "GAGAL", Toast.LENGTH_SHORT).show()
-                    }
-
-                    else -> {}
                 }
             }
         }
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
@@ -87,14 +88,16 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 is Result.Loading -> {
-                    Toast.makeText(this, "Login proses", Toast.LENGTH_SHORT).show()
+                    binding.progressBar.visibility = View.VISIBLE
                 }
 
                 is Result.Error -> {
+                    binding.progressBar.visibility = View.GONE
                     Toast.makeText(this, "Login gagal", Toast.LENGTH_SHORT).show()
                 }
 
                 else -> {
+                    binding.progressBar.visibility = View.GONE
                     Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
                 }
             }

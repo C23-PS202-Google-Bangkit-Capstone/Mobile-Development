@@ -10,7 +10,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Enter recipe name"
+        android:queryHint="@string/telusuri_nama_makanan"
         android:iconifiedByDefault="false"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="30dp"
@@ -21,6 +21,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_recipes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="6dp"
+        android:padding="8dp"/>
 
 </LinearLayout>

@@ -28,7 +28,7 @@ class SearchActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-        supportActionBar?.title = "Search"
+        supportActionBar?.title = "Penelusuran"
 
         adapter = RecipesAdapter()
         rvRecipes = binding.rvRecipes

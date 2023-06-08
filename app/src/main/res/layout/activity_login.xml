@@ -16,7 +16,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif"
-        android:text="Log In with email that has been registered to Fresh Check"
+        android:text="@string/tv_form_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="Email"
+        android:hint="@string/email"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:hint="Password"
+        android:hint="@string/kata_sandi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail"
@@ -80,7 +80,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/primary_color"
-        android:text="Sign In"
+        android:text="@string/masuk"
         android:textColor="@color/white"
         app:cornerRadius="16dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -102,16 +102,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Don't have an account?" />
+            android:text="@string/belum_punya_akun" />
 
         <TextView
             android:id="@+id/tv_toregister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text=" Register Now!"
+            android:layout_marginStart="3dp"
+            android:text="@string/daftar_sekarang"
             android:textColor="@color/primary_color"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/bg_rv"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

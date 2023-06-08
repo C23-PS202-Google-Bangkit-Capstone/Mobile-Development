@@ -13,7 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -95,20 +94,26 @@ class ProfileFragment : Fragment() {
         binding.rvBookmark.adapter = adapter.withLoadStateFooter(
             footer = LoadingAdapter { adapter.retry() }
         )
-        viewModel.getStoriesRecommendation(search!!).observe(requireActivity()) {
-            adapter.submitData(lifecycle, it)
+        viewModel.getRecipesRecommendation(search!!).observe(requireActivity()) { fresh ->
+            if (fresh == null) {
+                binding.tvNothing.visibility = View.VISIBLE
+                binding.rvBookmark.visibility = View.GONE
+            } else {
+                binding.tvNothing.visibility = View.GONE
+                binding.rvBookmark.visibility = View.VISIBLE
+                adapter.submitData(lifecycle, fresh)
+            }
         }
     }
+
 
     private fun showRecyclerView() {
         rvRecipes.layoutManager = GridLayoutManager(requireContext(), 2)
         rvRecipes.setHasFixedSize(true)
         rvRecipes.adapter = adapter
 
-        if (rvRecipes.isEmpty()){
-        binding.tvNothing.text = "Tidak ada resep dari lokasi Anda"
-        }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.action_bar_profile, menu)
@@ -129,7 +134,7 @@ class ProfileFragment : Fragment() {
     private fun showLogoutConfirmationDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Logout")
-            .setMessage("Apakah Anda yakin ingin logout?")
+            .setMessage("Apakah Anda ingin keluar dari akun Anda")
             .setPositiveButton("Ya") { dialog: DialogInterface, _: Int ->
                 // Lakukan logout
                 performLogout()

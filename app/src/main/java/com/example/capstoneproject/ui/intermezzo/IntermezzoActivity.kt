@@ -1,5 +1,6 @@
 package com.example.capstoneproject.ui.intermezzo
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -8,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.capstoneproject.databinding.ActivityIntermezzoBinding
+import com.example.capstoneproject.ui.camera.CameraViewModel
+import com.example.capstoneproject.ui.register.RegisterActivity
 import com.example.capstoneproject.util.ViewModelFactory
 import com.example.capstoneproject.util.repository.Result
 
@@ -30,12 +33,16 @@ class IntermezzoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         // Mengubah warna Action Bar
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-        supportActionBar?.title = "Scan Result"
+        supportActionBar?.title = "Deteksi Kesegaran"
 
         factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this, factory)[IntermezzoViewModel::class.java]
 
         getIntermezzo()
+
+        binding.btnDeteksi.setOnClickListener {
+            onBackPressed()
+        }
 
     }
 

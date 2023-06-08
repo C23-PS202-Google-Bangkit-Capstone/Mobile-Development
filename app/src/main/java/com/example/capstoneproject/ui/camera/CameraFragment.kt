@@ -100,7 +100,7 @@ class CameraFragment : Fragment() {
             if (result.isEmpty()) {
                 Toast.makeText(
                     activity,
-                    "Benda tidak dapat terdeteksi, mohon foto ulang",
+                    "Gambar tidak dapat terdeteksi",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {

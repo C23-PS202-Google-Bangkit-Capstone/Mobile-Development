@@ -1,6 +1,5 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,7 +17,7 @@
             android:id="@+id/tv_nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Lengkap"
+            android:text="@string/nama_lengkap"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -28,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Kabupaten/Kota"
+            android:text="@string/provinsi"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -38,12 +37,14 @@
         android:id="@+id/tv_bookmark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:padding="4dp"
-        android:text="Your Bookmark"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="6dp"
+        android:text="@string/kamu_mungkin_juga_suka"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textColor="@color/text_icon_outline"
+        android:textSize="12sp"
+        android:background="@drawable/bottom_stroke"
         app:layout_constraintTop_toBottomOf="@id/linear1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -53,8 +54,9 @@
         android:id="@+id/rv_bookmark"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:padding="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:background="@color/bg_rv"
         app:layout_constraintTop_toBottomOf="@id/tv_bookmark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,11 +64,15 @@
 
     <TextView
         android:id="@+id/tv_nothing"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_bookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:textColor="@color/text_icon_outline"
+        android:text="@string/tidak_ada_resep_dari_lokasi_anda"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rv_bookmark" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_bookmark" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

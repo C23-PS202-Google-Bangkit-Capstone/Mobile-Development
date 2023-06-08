@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginLeft="5dp"
+    android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="4dp"
     card_view:cardCornerRadius="4dp"
@@ -24,18 +24,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/gambar" />
 
         <ImageView
             android:id="@+id/img_location"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/baseline_location_on_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_item_location"
             card_view:layout_constraintBottom_toBottomOf="@id/tv_item_location"
-            card_view:layout_constraintEnd_toStartOf="@id/tv_item_location" />
+            card_view:layout_constraintEnd_toStartOf="@id/tv_item_location"
+            android:contentDescription="@string/location" />
 
         <TextView
             android:id="@+id/tv_item_name"
@@ -60,9 +62,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="12dp"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/img_location"

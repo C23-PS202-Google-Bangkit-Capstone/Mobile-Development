@@ -1,23 +1,46 @@
 <resources>
     <string name="app_name">Fresh Check</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Camera</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_dashboard">Deteksi</string>
+    <string name="title_profile">Akun</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
     //contoh aja
-    <string name="recipe_name">Recipe Name</string>
+    <string name="recipe_name">Nama Resep</string>
     <string name="description">Ini deskripsi</string>
 
-    <string name="timeout">Timeout</string>
-    <string name="reload">Reload</string>
+    <string name="timeout">Waktu Habis</string>
+    <string name="reload">Memuat Ulang</string>
     <string name="location">Ini lokasi</string>
     <string name="nama">Ini Nama</string>
+    <string name="tv_form_login">Masuk dengan email yang telah didaftarkan ke Fresh Check</string>
+    <string name="email">Email</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="masuk">Masuk</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="daftar_sekarang">Daftar Sekarang</string>
+    <string name="tv_form_register">Silakan Lengkapi formulir di bawah ini dengan benar dan akurat</string>
+    <string name="daftar">Daftar</string>
+    <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
+    <string name="nomor_telpon">Nomor Telpon</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="telusuri_nama_makanan">Telusuri resep makanan</string>
+    <string name="fresh_check">Fresh Check</string>
+    <string name="pilih_gambar">Pilih Gambar</string>
+    <string name="pindai">Deteksi</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="provinsi">Provinsi</string>
+    <string name="kamu_mungkin_juga_suka">----- Rekomendasi resep makanan sesuai daerahmu -----</string>
+    <string name="gambar">Gambar</string>
+    <string name="tidak_ada_resep_dari_lokasi_anda">Tidak ada resep dari lokasi anda</string>
+    <string name="deteksi_lagi">Deteksi Lagi</string>
+    <string name="status_buah">Rotten Mango</string>
 
     <string-array name="provinces">
+        <item>Pilih Provinsi</item>
         <item>Aceh</item>
         <item>Bali</item>
         <item>Banten</item>
@@ -28,7 +51,7 @@
         <item>Jawa Barat</item>
         <item>Jawa Tengah</item>
         <item>Jawa Timur</item>
-        <item>Kalimanta Barat</item>
+        <item>Kalimantan Barat</item>
         <item>Kalimantan Timur</item>
         <item>Kalimantan Tengah</item>
         <item>Kalimantan Selatan</item>
