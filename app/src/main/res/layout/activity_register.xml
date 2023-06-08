@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.register.RegisterActivity">
 
     <TextView
         android:id="@+id/tv_welcome"
@@ -97,21 +97,30 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Spinner
-        android:id="@+id/spinner_provinsi"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutProvinsi"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="#DFDFDF"
-        android:drawablePadding="8dp"
-        android:padding="8dp"
+        android:hint="@string/provinsi"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPhone"
-        app:startIconDrawable="@drawable/baseline_location_on_24" />
+        app:startIconDrawable="@drawable/baseline_location_on_24">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewProvinsi"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:ems="10"
+            android:padding="8dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -126,7 +135,7 @@
         app:startIconDrawable="@drawable/baseline_lock_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_provinsi"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProvinsi"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/text_icon_outline">
 

@@ -5,7 +5,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +13,7 @@ import com.example.capstoneproject.databinding.ActivityRegisterBinding
 import com.example.capstoneproject.util.ViewModelFactory
 import com.example.capstoneproject.util.repository.Result
 import com.google.android.material.textfield.TextInputLayout
+import android.widget.AutoCompleteTextView
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -38,16 +38,15 @@ class RegisterActivity : AppCompatActivity() {
         val textInputLayoutPassword: TextInputLayout = findViewById(R.id.textInputLayoutPassword)
         textInputLayoutPassword.setStartIconDrawable(R.drawable.baseline_lock_24)
 
-        // Menginisialisasi Spinner dan mengatur teks hint
-        val spinnerProvinsi: Spinner = findViewById(R.id.spinner_provinsi)
+        // Menginisialisasi AutoCompleteTextView dan mengatur teks hint
+        val autoCompleteTextViewProvinsi: AutoCompleteTextView = findViewById(R.id.autoCompleteTextViewProvinsi)
 
-        // Tambahkan teks hint "Pilih Provinsi" sebagai item pertama dalam daftar provinsi
-        val provincesWithHint = resources.getStringArray(R.array.provinces).toList()
+        // Mendapatkan daftar provinsi dari resources
+        val provinces = resources.getStringArray(R.array.provinces)
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, provincesWithHint)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        spinnerProvinsi.adapter = adapter
+        // Inisialisasi adapter untuk AutoCompleteTextView
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, provinces)
+        autoCompleteTextViewProvinsi.setAdapter(adapter)
 
         binding.btnSignup.setOnClickListener {
             registerClicked()
@@ -63,33 +62,41 @@ class RegisterActivity : AppCompatActivity() {
         val email = binding.edEmail.text.toString().trim()
         val password = binding.edPassword.text.toString().trim()
         val phone = binding.edPhone.text.toString().trim()
-        val selectedProvince = binding.spinnerProvinsi.selectedItem.toString()
+        val selectedProvince = binding.autoCompleteTextViewProvinsi.text.toString().trim()
 
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty() || selectedProvince == "Pilih Provinsi") {
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty() || selectedProvince.isEmpty()) {
             Toast.makeText(this, "Mohon lengkapi semua field", Toast.LENGTH_SHORT).show()
         } else {
             if (password.length < 8) {
                 Toast.makeText(this, "Kata sandi harus terdiri dari minimal 8 karakter", Toast.LENGTH_SHORT).show()
             } else {
-                binding.progressBar.visibility = View.VISIBLE
-                viewModel.postRegister(username, email, password, phone, selectedProvince).observe(this) {
-                    when (it) {
-                        is Result.Success -> {
-                            binding.progressBar.visibility = View.GONE
-                            Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show()
-                            onBackPressed()
+                if (!isValidProvince(selectedProvince)) {
+                    Toast.makeText(this, "Provinsi yang dipilih tidak valid", Toast.LENGTH_SHORT).show()
+                } else {
+                    binding.progressBar.visibility = View.VISIBLE
+                    viewModel.postRegister(username, email, password, phone, selectedProvince).observe(this) {
+                        when (it) {
+                            is Result.Success -> {
+                                binding.progressBar.visibility = View.GONE
+                                Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show()
+                                onBackPressed()
+                            }
+                            is Result.Error -> {
+                                binding.progressBar.visibility = View.GONE
+                                Toast.makeText(this, "Pendaftaran Gagal", Toast.LENGTH_SHORT).show()
+                            }
+                            else -> {}
                         }
-                        is Result.Error -> {
-                            binding.progressBar.visibility = View.GONE
-                            Toast.makeText(this, "Pendaftaran Gagal", Toast.LENGTH_SHORT).show()
-                        }
-                        else -> {}
                     }
                 }
             }
         }
     }
 
+    private fun isValidProvince(province: String): Boolean {
+        val provinces = resources.getStringArray(R.array.provinces)
+        return provinces.contains(province)
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -100,5 +107,4 @@ class RegisterActivity : AppCompatActivity() {
         super.onBackPressed()
         finish()
     }
-
 }
