@@ -42,6 +42,17 @@ class Repository(private val pref: UserPreferences, private val apiService: ApiS
         ).liveData
     }
 
+    fun getRecipesRecommendation(recipeLocation: String): LiveData<PagingData<RecipesItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = {
+                SourcePagingLocation(apiService, recipeLocation)
+            }
+        ).liveData
+    }
+
     fun getIntermezzo(id: Int): LiveData<Result<IntermezzoResponse>> = liveData {
         emit(Result.Loading)
         try {
@@ -77,7 +88,7 @@ class Repository(private val pref: UserPreferences, private val apiService: ApiS
             emit(Result.Loading)
             try {
                 val response = apiService.postRegister(
-                    RegisterRequest(username,email, password, phoneNumber, location)
+                    RegisterRequest(username, email, password, phoneNumber, location)
                 )
                 emit(Result.Success(response))
             } catch (e: Exception) {

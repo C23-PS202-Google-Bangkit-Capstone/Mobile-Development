@@ -25,4 +25,4 @@ data class RecipesItem(
 
     @field:SerializedName("photoUrl")
     val photoUrl: String
-    ) : Parcelable
+) : Parcelable

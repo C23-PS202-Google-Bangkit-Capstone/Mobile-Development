@@ -98,15 +98,18 @@ class CameraFragment : Fragment() {
             val result = classifier.recognizeImage(bitmap)
 
             if (result.isEmpty()) {
-                Toast.makeText(activity, "Benda tidak dapat terdeteksi, mohon foto ulang", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    activity,
+                    "Benda tidak dapat terdeteksi, mohon foto ulang",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 //Toast.makeText(activity, result[0].id, Toast.LENGTH_SHORT).show()
                 val intent = Intent(activity, IntermezzoActivity::class.java)
-                intent.putExtra(EXTRA_ID,result[0].id)
+                intent.putExtra(EXTRA_ID, result[0].id)
                 intent.putExtra(EXTRA_TITLE, result[0].title)
                 startActivity(intent)
             }
-
 
 
         }

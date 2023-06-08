@@ -13,11 +13,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentProfileBinding
+import com.example.capstoneproject.ui.home.adapter.LoadingAdapter
+import com.example.capstoneproject.ui.home.adapter.RecipesAdapter
 import com.example.capstoneproject.ui.login.LoginActivity
 import com.example.capstoneproject.util.ViewModelFactory
 
@@ -28,6 +32,9 @@ class ProfileFragment : Fragment() {
 
     private lateinit var viewModel: ProfileViewModel
     private lateinit var factory: ViewModelFactory
+    private lateinit var rvRecipes: RecyclerView
+    private lateinit var adapter: RecipesAdapter
+    private var search: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,8 +54,6 @@ class ProfileFragment : Fragment() {
         actionBar?.title = "Fresh Check"
         actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
-        val recyclerView: RecyclerView = binding.rvBookmark
-        recyclerView.setHasFixedSize(true)
 
         factory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, factory)[ProfileViewModel::class.java]
@@ -70,9 +75,38 @@ class ProfileFragment : Fragment() {
     private fun setUserData() {
         viewModel.getUser().observe(viewLifecycleOwner) { user ->
             if (user.isLogin) {
+
                 binding.tvNama.text = user.userName
                 binding.tvKota.text = user.location
+                search = user.location
+
+                adapter = RecipesAdapter()
+                rvRecipes = binding.rvBookmark
+                rvRecipes.setHasFixedSize(true)
+
+                showRecyclerView()
+                showListRecommendation()
+
             }
+        }
+    }
+
+    private fun showListRecommendation() {
+        binding.rvBookmark.adapter = adapter.withLoadStateFooter(
+            footer = LoadingAdapter { adapter.retry() }
+        )
+        viewModel.getStoriesRecommendation(search!!).observe(requireActivity()) {
+            adapter.submitData(lifecycle, it)
+        }
+    }
+
+    private fun showRecyclerView() {
+        rvRecipes.layoutManager = GridLayoutManager(requireContext(), 2)
+        rvRecipes.setHasFixedSize(true)
+        rvRecipes.adapter = adapter
+
+        if (rvRecipes.isEmpty()){
+        binding.tvNothing.text = "Tidak ada resep dari lokasi Anda"
         }
     }
 
@@ -87,6 +121,7 @@ class ProfileFragment : Fragment() {
                 showLogoutConfirmationDialog()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

@@ -19,5 +19,5 @@ class CameraViewModel(private val repo: Repository) : ViewModel() {
     }
 
     fun uploadFile(file: MultipartBody.Part) =
-       repo.uploadImage(file)
+        repo.uploadImage(file)
 }

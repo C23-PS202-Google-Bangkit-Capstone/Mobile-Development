@@ -1,4 +1,5 @@
 <resources>
+
     <style name="Theme.CapstoneProject" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color (purple). -->
         <item name="colorPrimary">@color/primary_color</item>
@@ -18,7 +19,6 @@
         <!-- Customize your theme here. -->
 
     </style>
-
 
 
     <style name="custom_card_view_style" parent="Widget.MaterialComponents.CardView">

@@ -1,6 +1,5 @@
 package com.example.capstoneproject.ui.login
 
-import com.example.capstoneproject.ui.register.RegisterActivity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -16,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.capstoneproject.MainActivity
 import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.ActivityLoginBinding
+import com.example.capstoneproject.ui.register.RegisterActivity
 import com.example.capstoneproject.util.ViewModelFactory
 import com.example.capstoneproject.util.api.LoginRequest
 import com.example.capstoneproject.util.repository.Result
@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         binding.btnSignin.setOnClickListener {
             loginClicked()
         }
-        binding.tvToregister.setOnClickListener{
+        binding.tvToregister.setOnClickListener {
             val intentToregister = Intent(this, RegisterActivity::class.java)
             startActivity(intentToregister)
         }

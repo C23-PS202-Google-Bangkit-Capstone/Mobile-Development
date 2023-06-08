@@ -4,14 +4,10 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.ActivityIntermezzoBinding
-import com.example.capstoneproject.databinding.ActivityLoginBinding
-import com.example.capstoneproject.ui.home.HomeViewModel
 import com.example.capstoneproject.util.ViewModelFactory
 import com.example.capstoneproject.util.repository.Result
 
@@ -43,25 +39,24 @@ class IntermezzoActivity : AppCompatActivity() {
 
     }
 
-    private fun getIntermezzo(){
+    private fun getIntermezzo() {
         val id = intent.getStringExtra(EXTRA_ID)!!.toInt()
 
-        if (id > 16){
+        if (id > 16) {
             binding.ivSilang.isVisible = true
             binding.ivCeklis.isVisible = false
-        }
-        else{
+        } else {
             binding.ivSilang.isVisible = false
             binding.ivCeklis.isVisible = true
         }
         val title = intent.getStringExtra(EXTRA_TITLE)
         //Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
 
-        viewModel.getIntermezzo(id).observe(this){
+        viewModel.getIntermezzo(id).observe(this) {
             when (it) {
                 is Result.Success -> {
                     binding.textView3.text = it.data.intermezzoResult.description
-                   // Toast.makeText(this, "BERHASIL", Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(this, "BERHASIL", Toast.LENGTH_SHORT).show()
                 }
 
                 is Result.Error -> {

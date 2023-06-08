@@ -1,23 +1,20 @@
 package com.example.capstoneproject.ui.search
 
-import android.R
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstoneproject.databinding.ActivitySearchBinding
-import com.example.capstoneproject.ui.home.HomeViewModel
 import com.example.capstoneproject.ui.home.adapter.LoadingAdapter
 import com.example.capstoneproject.ui.home.adapter.RecipesAdapter
 import com.example.capstoneproject.util.ViewModelFactory
 
 class SearchActivity : AppCompatActivity() {
-    lateinit var binding : ActivitySearchBinding
+    lateinit var binding: ActivitySearchBinding
     private lateinit var rvRecipes: RecyclerView
     private lateinit var adapter: RecipesAdapter
     private lateinit var viewModel: SearchViewModel
@@ -40,7 +37,7 @@ class SearchActivity : AppCompatActivity() {
         factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this, factory)[SearchViewModel::class.java]
 
-        binding.searchView.setOnQueryTextListener(object  : SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.searchView.clearFocus()
                 search = query.toString()
@@ -66,7 +63,7 @@ class SearchActivity : AppCompatActivity() {
         binding.rvRecipes.adapter = adapter.withLoadStateFooter(
             footer = LoadingAdapter { adapter.retry() }
         )
-        viewModel.getStoriesSearch(search!!).observe(this) {
+        viewModel.getRecipesSearch(search!!).observe(this) {
             adapter.submitData(lifecycle, it)
         }
     }

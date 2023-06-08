@@ -1,6 +1,5 @@
 package com.example.capstoneproject.ui.register
 
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.capstoneproject.MainActivity
 import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.ActivityRegisterBinding
 import com.example.capstoneproject.util.ViewModelFactory
@@ -55,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
             registerClicked()
         }
 
-        binding.tvLogin.setOnClickListener{
+        binding.tvLogin.setOnClickListener {
             onBackPressed()
         }
     }
@@ -64,7 +62,8 @@ class RegisterActivity : AppCompatActivity() {
         if (binding.edPassword.text?.length!! < 8) {
             Toast.makeText(this, "SALAH", Toast.LENGTH_SHORT).show()
         } else {
-            val selectedProvince = binding.spinnerProvinsi.selectedItem.toString() // Mengambil provinsi yang dipilih dari Spinner
+            val selectedProvince =
+                binding.spinnerProvinsi.selectedItem.toString() // Mengambil provinsi yang dipilih dari Spinner
             viewModel.postRegister(
                 binding.edUsername.text.toString(),
                 binding.edEmail.text.toString(),

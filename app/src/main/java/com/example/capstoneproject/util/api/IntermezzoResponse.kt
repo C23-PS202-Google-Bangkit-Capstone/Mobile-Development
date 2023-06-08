@@ -18,4 +18,4 @@ data class IntermezzoResult(
     @field:SerializedName("detail")
     val description: String
 
-    )
+)

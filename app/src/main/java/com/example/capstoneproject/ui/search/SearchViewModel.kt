@@ -9,7 +9,7 @@ import com.example.capstoneproject.util.api.RecipesItem
 import com.example.capstoneproject.util.repository.Repository
 
 class SearchViewModel(private val repo: Repository) : ViewModel() {
-    fun getStoriesSearch(recipeName: String): LiveData<PagingData<RecipesItem>> {
+    fun getRecipesSearch(recipeName: String): LiveData<PagingData<RecipesItem>> {
         return repo.getRecipesSearch(recipeName).cachedIn(viewModelScope)
     }
 }

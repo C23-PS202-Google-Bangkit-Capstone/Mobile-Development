@@ -21,8 +21,8 @@ import com.example.capstoneproject.R
 import com.example.capstoneproject.databinding.FragmentHomeBinding
 import com.example.capstoneproject.ui.home.adapter.LoadingAdapter
 import com.example.capstoneproject.ui.home.adapter.RecipesAdapter
-import com.example.capstoneproject.util.ViewModelFactory
 import com.example.capstoneproject.ui.search.SearchActivity
+import com.example.capstoneproject.util.ViewModelFactory
 
 class HomeFragment : Fragment() {
 

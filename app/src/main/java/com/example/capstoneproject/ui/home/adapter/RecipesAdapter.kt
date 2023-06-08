@@ -1,7 +1,6 @@
 package com.example.capstoneproject.ui.home.adapter
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.core.util.Pair
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.capstoneproject.databinding.ItemRowHeroBinding
 import com.example.capstoneproject.ui.detail.DetailRecipeActivity
 import com.example.capstoneproject.util.api.RecipesItem
