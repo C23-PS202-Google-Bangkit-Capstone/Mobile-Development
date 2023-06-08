@@ -79,6 +79,8 @@ class CameraFragment : Fragment() {
         pickImageButton = view.findViewById(R.id.pickImageButton)
         scanButton = view.findViewById(R.id.scan)
 
+        scanButton.isEnabled = false
+
         pickImageButton.setOnClickListener {
             checkStoragePermission()
         }
@@ -184,6 +186,7 @@ class CameraFragment : Fragment() {
 
             }
         }
+        scanButton.isEnabled = true
     }
 
     private fun uploadPhoto() {
