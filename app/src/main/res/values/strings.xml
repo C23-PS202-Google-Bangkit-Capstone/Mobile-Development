@@ -25,32 +25,32 @@
         <item>Gorontalo</item>
         <item>Jakarta</item>
         <item>Jambi</item>
-        <item>West Java</item>
-        <item>Central Java</item>
-        <item>East Java</item>
-        <item>West Kalimantan</item>
-        <item>South Kalimantan</item>
-        <item>Central Kalimantan</item>
-        <item>East Kalimantan</item>
-        <item>North Kalimantan</item>
-        <item>Bangka Belitung Islands</item>
-        <item>Riau Islands</item>
+        <item>Jawa Barat</item>
+        <item>Jawa Tengah</item>
+        <item>Jawa Timur</item>
+        <item>Kalimanta Barat</item>
+        <item>Kalimantan Timur</item>
+        <item>Kalimantan Tengah</item>
+        <item>Kalimantan Selatan</item>
+        <item>Kalimantan Utara</item>
+        <item>Kepulauan Bangka Belitung</item>
+        <item>Kepulauan Riau</item>
         <item>Lampung</item>
         <item>Maluku</item>
-        <item>North Maluku</item>
-        <item>West Nusa Tenggara</item>
-        <item>East Nusa Tenggara</item>
+        <item>Maluku Utara</item>
+        <item>Nusa Tenggara Barat</item>
+        <item>Nusa Tenggara Timur</item>
         <item>Papua</item>
-        <item>West Papua</item>
+        <item>Papua Barat</item>
         <item>Riau</item>
-        <item>West Sulawesi</item>
-        <item>South Sulawesi</item>
-        <item>Central Sulawesi</item>
-        <item>Southeast Sulawesi</item>
-        <item>North Sulawesi</item>
-        <item>West Sumatra</item>
-        <item>South Sumatra</item>
-        <item>North Sumatra</item>
+        <item>Sulawesi Barat</item>
+        <item>Sulawesi Selatan</item>
+        <item>Sulawesi Tengah</item>
+        <item>Sulawesi Tenggara</item>
+        <item>Sulawesi Utara</item>
+        <item>Sumatra Barat</item>
+        <item>Sumatra Selatan</item>
+        <item>Sumatra Utara</item>
         <item>Yogyakarta</item>
     </string-array>
 
