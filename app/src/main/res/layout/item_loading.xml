@@ -19,6 +19,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:indeterminateTint="@color/bg_rv"
         android:layout_gravity="center" />
 
     <Button

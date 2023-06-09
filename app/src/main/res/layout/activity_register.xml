@@ -187,7 +187,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:layout_marginStart="3dp"
-            android:text="@string/daftar"
+            android:text="@string/masuk"
             android:textColor="@color/primary_color" />
     </LinearLayout>
 

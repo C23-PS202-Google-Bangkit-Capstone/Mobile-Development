@@ -53,10 +53,8 @@ class ProfileFragment : Fragment() {
         actionBar?.title = "Fresh Check"
         actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
-
         factory = ViewModelFactory.getInstance(requireContext())
-        viewModel = ViewModelProvider(this, factory)[ProfileViewModel::class.java]
-
+        viewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
 
         setUserData()
     }
@@ -74,7 +72,6 @@ class ProfileFragment : Fragment() {
     private fun setUserData() {
         viewModel.getUser().observe(viewLifecycleOwner) { user ->
             if (user.isLogin) {
-
                 binding.tvNama.text = user.userName
                 binding.tvKota.text = user.location
                 search = user.location
@@ -85,7 +82,6 @@ class ProfileFragment : Fragment() {
 
                 showRecyclerView()
                 showListRecommendation()
-
             }
         }
     }
@@ -94,26 +90,23 @@ class ProfileFragment : Fragment() {
         binding.rvBookmark.adapter = adapter.withLoadStateFooter(
             footer = LoadingAdapter { adapter.retry() }
         )
-        viewModel.getRecipesRecommendation(search!!).observe(requireActivity()) { fresh ->
+        viewModel.getRecipesRecommendation(search!!).observe(viewLifecycleOwner) { fresh ->
             if (fresh == null) {
                 binding.tvNothing.visibility = View.VISIBLE
                 binding.rvBookmark.visibility = View.GONE
             } else {
                 binding.tvNothing.visibility = View.GONE
                 binding.rvBookmark.visibility = View.VISIBLE
-                adapter.submitData(lifecycle, fresh)
+                adapter.submitData(viewLifecycleOwner.lifecycle, fresh)
             }
         }
     }
-
 
     private fun showRecyclerView() {
         rvRecipes.layoutManager = GridLayoutManager(requireContext(), 2)
         rvRecipes.setHasFixedSize(true)
         rvRecipes.adapter = adapter
-
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.action_bar_profile, menu)
@@ -126,7 +119,6 @@ class ProfileFragment : Fragment() {
                 showLogoutConfirmationDialog()
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -134,7 +126,7 @@ class ProfileFragment : Fragment() {
     private fun showLogoutConfirmationDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Logout")
-            .setMessage("Apakah Anda ingin keluar dari akun Anda")
+            .setMessage("Apakah Anda ingin keluar dari akun Anda?")
             .setPositiveButton("Ya") { dialog: DialogInterface, _: Int ->
                 // Lakukan logout
                 performLogout()

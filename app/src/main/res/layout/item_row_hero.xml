@@ -9,6 +9,7 @@
     android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="4dp"
+    android:layout_marginEnd="5dp"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="2dp">
 

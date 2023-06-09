@@ -33,7 +33,7 @@
     <string name="pindai">Deteksi</string>
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="provinsi">Provinsi</string>
-    <string name="kamu_mungkin_juga_suka">----- Rekomendasi resep makanan sesuai daerahmu -----</string>
+    <string name="kamu_mungkin_juga_suka">Rekomendasi resep makanan sesuai daerahmu</string>
     <string name="gambar">Gambar</string>
     <string name="tidak_ada_resep_dari_lokasi_anda">Tidak ada resep dari lokasi anda</string>
     <string name="deteksi_lagi">Deteksi Lagi</string>

@@ -65,7 +65,7 @@ class RegisterActivity : AppCompatActivity() {
         val selectedProvince = binding.autoCompleteTextViewProvinsi.text.toString().trim()
 
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty() || selectedProvince.isEmpty()) {
-            Toast.makeText(this, "Mohon lengkapi semua field", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Mohon Lengkapi Semua Field", Toast.LENGTH_SHORT).show()
         } else {
             if (password.length < 8) {
                 Toast.makeText(this, "Kata sandi harus terdiri dari minimal 8 karakter", Toast.LENGTH_SHORT).show()
