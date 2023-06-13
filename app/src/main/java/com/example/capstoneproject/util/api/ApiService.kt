@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface ApiService {
 
     @Multipart
-    @POST("/upload/upload")
+    @POST("/storage/upload")
     suspend fun uploadImage(
         @Part file: MultipartBody.Part
     ): FileUploadResponse
