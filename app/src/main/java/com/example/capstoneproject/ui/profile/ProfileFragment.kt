@@ -54,9 +54,10 @@ class ProfileFragment : Fragment() {
         actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
         factory = ViewModelFactory.getInstance(requireContext())
-        viewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory)[ProfileViewModel::class.java]
 
         setUserData()
+
     }
 
     override fun onResume() {
@@ -80,6 +81,7 @@ class ProfileFragment : Fragment() {
                 rvRecipes = binding.rvBookmark
                 rvRecipes.setHasFixedSize(true)
 
+
                 showRecyclerView()
                 showListRecommendation()
             }
@@ -90,14 +92,21 @@ class ProfileFragment : Fragment() {
         binding.rvBookmark.adapter = adapter.withLoadStateFooter(
             footer = LoadingAdapter { adapter.retry() }
         )
-        viewModel.getRecipesRecommendation(search!!).observe(viewLifecycleOwner) { fresh ->
-            if (fresh == null) {
-                binding.tvNothing.visibility = View.VISIBLE
-                binding.rvBookmark.visibility = View.GONE
-            } else {
-                binding.tvNothing.visibility = View.GONE
-                binding.rvBookmark.visibility = View.VISIBLE
-                adapter.submitData(viewLifecycleOwner.lifecycle, fresh)
+        viewModel.getRecipesRecommendation(search!!).observe(requireActivity()) { fresh ->
+            adapter.submitData(lifecycle, fresh)
+        }
+
+        adapter.addLoadStateListener { loadState ->
+            if (loadState.append.endOfPaginationReached) {
+                if (adapter.itemCount < 1) {
+                    // Show empty view
+                    binding.textView2.visibility = View.VISIBLE
+                    binding.rvBookmark.visibility = View.GONE
+                } else {
+                    // Hide empty view
+                    binding.textView2.visibility = View.GONE
+                    binding.rvBookmark.visibility = View.VISIBLE
+                }
             }
         }
     }
@@ -119,9 +128,11 @@ class ProfileFragment : Fragment() {
                 showLogoutConfirmationDialog()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 
     private fun showLogoutConfirmationDialog() {
         val builder = AlertDialog.Builder(requireContext())

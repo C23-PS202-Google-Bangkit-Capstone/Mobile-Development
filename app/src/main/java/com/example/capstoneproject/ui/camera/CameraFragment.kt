@@ -49,8 +49,10 @@ class CameraFragment : Fragment() {
     private lateinit var imageView: ImageView
     private lateinit var pickImageButton: Button
     private lateinit var scanButton: Button
-    private lateinit var previewImageBitmap: Bitmap
+
     private var getFile: File? = null
+    private var imageUri: Uri? = null
+    private var imageBitmap: Bitmap? = null
 
     private lateinit var factory: ViewModelFactory
     private lateinit var viewModel: CameraViewModel
@@ -70,7 +72,6 @@ class CameraFragment : Fragment() {
         factory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, factory)[CameraViewModel::class.java]
 
-        // Setting Action Bar
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.title = "Fresh Check"
         actionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
@@ -79,7 +80,8 @@ class CameraFragment : Fragment() {
         pickImageButton = view.findViewById(R.id.pickImageButton)
         scanButton = view.findViewById(R.id.scan)
 
-        scanButton.isEnabled = viewModel.selectedImageUri.value != null || viewModel.selectedImageBitmap.value != null
+        scanButton.isEnabled =
+            imageUri != null || imageBitmap != null
 
 
 
@@ -87,19 +89,11 @@ class CameraFragment : Fragment() {
             checkStoragePermission()
         }
 
-        viewModel.selectedImageUri.observe(viewLifecycleOwner) { uri ->
-            imageView.setImageURI(uri)
-
-        }
-
-        viewModel.selectedImageBitmap.observe(viewLifecycleOwner) { bitmap ->
-            previewImageBitmap = bitmap
-        }
 
         scanButton.setOnClickListener {
-            val bitmap = previewImageBitmap
+            val bitmap = imageBitmap
 
-            val result = classifier.recognizeImage(bitmap)
+            val result = classifier.recognizeImage(bitmap!!)
 
             if (result.isEmpty()) {
                 Toast.makeText(
@@ -167,20 +161,13 @@ class CameraFragment : Fragment() {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_CODE_IMAGE_PICKER -> {
+                    imageUri = data!!.data
+                    imageView.setImageURI(imageUri)
 
-                    val imageUri: Uri? = data!!.data
-                    val imageBitmap: Bitmap? = MediaStore.Images.Media.getBitmap(
+                    imageBitmap = MediaStore.Images.Media.getBitmap(
                         requireActivity().contentResolver, imageUri
                     )
                     val file = uriToFile(imageUri!!, requireContext())
-
-                    imageUri.let {
-                        viewModel.setImageUri(imageUri)
-                    }
-
-                    imageBitmap.let {
-                        viewModel.setImageBitmap(imageBitmap!!)
-                    }
 
                     getFile = file
                     uploadPhoto()
@@ -188,7 +175,8 @@ class CameraFragment : Fragment() {
 
             }
         }
-        scanButton.isEnabled = viewModel.selectedImageUri.value != null || viewModel.selectedImageBitmap.value != null
+        scanButton.isEnabled =
+            imageUri != null || imageBitmap != null
     }
 
     private fun uploadPhoto() {

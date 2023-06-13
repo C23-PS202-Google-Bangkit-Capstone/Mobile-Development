@@ -108,7 +108,8 @@ class HomeFragment : Fragment() {
         val imageView = customView.findViewById<ImageView>(R.id.imageView)
         val titleTextView = customView.findViewById<TextView>(R.id.titleTextView)
         imageView.setImageResource(R.drawable.logoimage_darkgreen) // Ganti dengan sumber gambar yang Anda inginkan
-        titleTextView.text = getString(R.string.fresh_check) // Ganti dengan judul yang Anda inginkan
+        titleTextView.text =
+            getString(R.string.fresh_check) // Ganti dengan judul yang Anda inginkan
 
         actionBar?.customView = customView
 

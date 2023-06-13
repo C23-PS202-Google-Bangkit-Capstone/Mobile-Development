@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +14,6 @@ import com.example.capstoneproject.databinding.ActivityRegisterBinding
 import com.example.capstoneproject.util.ViewModelFactory
 import com.example.capstoneproject.util.repository.Result
 import com.google.android.material.textfield.TextInputLayout
-import android.widget.AutoCompleteTextView
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -39,7 +39,8 @@ class RegisterActivity : AppCompatActivity() {
         textInputLayoutPassword.setStartIconDrawable(R.drawable.baseline_lock_24)
 
         // Menginisialisasi AutoCompleteTextView dan mengatur teks hint
-        val autoCompleteTextViewProvinsi: AutoCompleteTextView = findViewById(R.id.autoCompleteTextViewProvinsi)
+        val autoCompleteTextViewProvinsi: AutoCompleteTextView =
+            findViewById(R.id.autoCompleteTextViewProvinsi)
 
         // Mendapatkan daftar provinsi dari resources
         val provinces = resources.getStringArray(R.array.provinces)
@@ -68,26 +69,36 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this, "Mohon Lengkapi Semua Field", Toast.LENGTH_SHORT).show()
         } else {
             if (password.length < 8) {
-                Toast.makeText(this, "Kata sandi harus terdiri dari minimal 8 karakter", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Kata sandi harus terdiri dari minimal 8 karakter",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 if (!isValidProvince(selectedProvince)) {
-                    Toast.makeText(this, "Provinsi yang dipilih tidak valid", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Provinsi yang dipilih tidak valid", Toast.LENGTH_SHORT)
+                        .show()
                 } else {
                     binding.progressBar.visibility = View.VISIBLE
-                    viewModel.postRegister(username, email, password, phone, selectedProvince).observe(this) {
-                        when (it) {
-                            is Result.Success -> {
-                                binding.progressBar.visibility = View.GONE
-                                Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show()
-                                onBackPressed()
+                    viewModel.postRegister(username, email, password, phone, selectedProvince)
+                        .observe(this) {
+                            when (it) {
+                                is Result.Success -> {
+                                    binding.progressBar.visibility = View.GONE
+                                    Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT)
+                                        .show()
+                                    onBackPressed()
+                                }
+
+                                is Result.Error -> {
+                                    binding.progressBar.visibility = View.GONE
+                                    Toast.makeText(this, "Pendaftaran Gagal", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
+
+                                else -> {}
                             }
-                            is Result.Error -> {
-                                binding.progressBar.visibility = View.GONE
-                                Toast.makeText(this, "Pendaftaran Gagal", Toast.LENGTH_SHORT).show()
-                            }
-                            else -> {}
                         }
-                    }
                 }
             }
         }
