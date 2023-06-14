@@ -100,11 +100,12 @@ class ProfileFragment : Fragment() {
             if (loadState.append.endOfPaginationReached) {
                 if (adapter.itemCount < 1) {
                     // Show empty view
-                    binding.textView2.visibility = View.VISIBLE
+                    binding.animationView.visibility = View.VISIBLE
+                    binding.animationView.playAnimation()
                     binding.rvBookmark.visibility = View.GONE
                 } else {
                     // Hide empty view
-                    binding.textView2.visibility = View.GONE
+                    binding.animationView.visibility = View.GONE
                     binding.rvBookmark.visibility = View.VISIBLE
                 }
             }
