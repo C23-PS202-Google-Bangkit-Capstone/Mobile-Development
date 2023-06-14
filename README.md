@@ -43,11 +43,6 @@ The image that has been scanned is going to uploaded to [our database](https://f
 ### Description Retrieval
 For the description retrieval, we get the id of the object that has been scanned earlier and then we made a request to https://freshcheck-j5ohfpkera-et.a.run.app/api/getAdditionalData with a query "fruit_id" and then the integer of the id
 
-
-## Contributors
-- Amar Al Fatah 
-- Zahran Difa Vidian
-
 # How to Use
 1. Open the app on your Android device.
 2. Select the Detection menu from the main screen.
@@ -59,3 +54,7 @@ For the description retrieval, we get the id of the object that has been scanned
 8. The results of the object detection and its description will be displayed on the screen.
 
 Feel free to customize the instructions based on the specific UI elements or functionality of your app.
+
+# Contributors
+- Amar Al Fatah 
+- Zahran Difa Vidian
