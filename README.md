@@ -53,8 +53,6 @@ For the description retrieval, we get the id of the object that has been scanned
 7. After the analysis is complete, the app will retrieve additional data and descriptions for the detected object.
 8. The results of the object detection and its description will be displayed on the screen.
 
-Feel free to customize the instructions based on the specific UI elements or functionality of your app.
-
 # Contributors
 - Amar Al Fatah 
 - Zahran Difa Vidian
