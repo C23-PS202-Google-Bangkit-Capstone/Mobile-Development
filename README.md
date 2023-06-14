@@ -24,7 +24,9 @@ Listed bellow are required libraries for the android studio project
 - Tensorflow Lite
 - Paging
 - Datastore
+- navigation-fragment and ui
 - com.dhaval2404.imagepicker (for taking image purposes)
+- com.airbnb.android:lottie
 
 # How the scan feature works
 The scan system consisted of 3 parts
@@ -45,3 +47,15 @@ For the description retrieval, we get the id of the object that has been scanned
 ## Contributors
 - Amar Al Fatah 
 - Zahran Difa Vidian
+
+# How to Use
+1. Open the app on your Android device.
+2. Select the Detection menu from the main screen.
+3. Tap on the "Pick Image" button to choose an image from your device's gallery.
+4. Once you have selected the image, press the "Detection" button to initiate the scanning process.
+5. Wait for the app to analyze the image using the built-in image classifier.
+6. The app will upload the scanned image to our database for further learning and analysis.
+7. After the analysis is complete, the app will retrieve additional data and descriptions for the detected object.
+8. The results of the object detection and its description will be displayed on the screen.
+
+Feel free to customize the instructions based on the specific UI elements or functionality of your app.
